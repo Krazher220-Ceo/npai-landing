@@ -284,6 +284,17 @@ body {
     white-space: nowrap;
 }
 
+/* Стили для ссылок-кнопок */
+a.btn {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.btn:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
@@ -727,6 +738,109 @@ body {
 }
 
 /* ===========================
+   License Section
+   =========================== */
+
+.license-section {
+    background: var(--light-color);
+    padding: var(--spacing-xl) 0;
+}
+
+.license-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.license-card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    border-left: 4px solid var(--primary-color);
+}
+
+.license-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.license-card.warning {
+    border-left-color: var(--danger-color);
+    background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+}
+
+.license-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    color: white;
+}
+
+.license-card.warning .license-icon {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+}
+
+.license-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.license-card.warning h3 {
+    color: var(--danger-color);
+}
+
+.license-card p {
+    color: var(--gray-color);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.license-card ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0;
+}
+
+.license-card ul li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--gray-color);
+    line-height: 1.6;
+}
+
+.license-card ul li:before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+.license-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-base);
+}
+
+.license-card a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* ===========================
    CTA Section
    =========================== */
 
@@ -972,6 +1086,10 @@ body {
     }
     
     .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .license-content {
         grid-template-columns: 1fr;
     }
     
