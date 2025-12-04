@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPAI - Визуализационная галерея</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a1929 0%, #1a5490 50%, #2d7fc4 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.5));
+      }
+      50% {
+        filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.8));
+      }
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .tab-button {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tab-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .tab-button:hover::before {
+      left: 100%;
+    }
+
+    .tab-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(96, 165, 250, 0.5);
+      color: #e2e8f0;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px -10px rgba(96, 165, 250, 0.4);
+    }
+
+    .tab-button.active {
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      border-color: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.6);
+      transform: translateY(-3px);
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 500px;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d7fc4 100%);
+      border-radius: 24px;
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: slideUp 1s ease-out;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-description {
+      font-size: 1.5rem;
+      color: #e2e8f0;
+      max-width: 700px;
+      line-height: 1.6;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    /* Animated Background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+    }
+
+    .data-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #60a5fa;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #60a5fa;
+      animation: pulse 2s ease-in-out infinite, float 4s ease-in-out infinite;
+    }
+
+    .data-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+      animation: flow 4s linear infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.5);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px);
+      }
+      50% {
+        transform: translateY(0) translateX(20px);
+      }
+      75% {
+        transform: translateY(20px) translateX(10px);
+      }
+    }
+
+    @keyframes flow {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(200%);
+        opacity: 0;
+      }
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #f1f5f9;
+      position: relative;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .module-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out backwards;
+    }
+
+    .module-card:nth-child(1) { animation-delay: 0.1s; }
+    .module-card:nth-child(2) { animation-delay: 0.2s; }
+    .module-card:nth-child(3) { animation-delay: 0.3s; }
+    .module-card:nth-child(4) { animation-delay: 0.4s; }
+    .module-card:nth-child(5) { animation-delay: 0.5s; }
+    .module-card:nth-child(6) { animation-delay: 0.6s; }
+    .module-card:nth-child(7) { animation-delay: 0.7s; }
+    .module-card:nth-child(8) { animation-delay: 0.8s; }
+    .module-card:nth-child(9) { animation-delay: 0.9s; }
+    .module-card:nth-child(10) { animation-delay: 1s; }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: scale(0.5);
+    }
+
+    .module-card:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .module-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.5);
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+
+    .module-icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .module-card:hover .module-icon {
+      transform: scale(1.15) rotate(5deg);
+      filter: drop-shadow(0 10px 20px rgba(96, 165, 250, 0.4));
+    }
+
+    .module-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 1rem;
+    }
+
+    .module-desc {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1a5490 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 800px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-content::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: rgba(96, 165, 250, 0.5);
+      border-radius: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb:hover {
+      background: rgba(96, 165, 250, 0.7);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 1.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      background: rgba(239, 68, 68, 0.9);
+      transform: rotate(90deg) scale(1.1);
+      box-shadow: 0 5px 20px rgba(239, 68, 68, 0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .modal-icon {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .modal-body {
+      color: #e2e8f0;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .modal-body h3 {
+      color: #60a5fa;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .modal-body ul {
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+
+    .modal-body li {
+      margin-bottom: 0.75rem;
+      color: #cbd5e1;
+    }
+
+    .modal-body p {
+      margin-bottom: 1rem;
+    }
+
+    .modal-body strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    /* Infographic Section */
+    .infographic-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      animation: fadeIn 1.4s ease-out;
+    }
+
+    .platform-diagram {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .central-node {
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, #1a5490 0%, #2d7fc4 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: 0 0 80px rgba(96, 165, 250, 0.7);
+      position: relative;
+      z-index: 10;
+      border: 4px solid rgba(96, 165, 250, 0.3);
+      animation: rotateGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes rotateGlow {
+      0%, 100% {
+        box-shadow: 0 0 80px rgba(96, 165, 250, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 100px rgba(59, 130, 246, 0.9);
+      }
+    }
+
+    .connection-node {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(5px);
+      border: 2px solid rgba(96, 165, 250, 0.3);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 1rem;
+      transition: all 0.3s ease;
+      animation: nodeFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes nodeFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .connection-node:hover {
+      background: rgba(217, 119, 6, 0.2);
+      border-color: #f59e0b;
+      transform: scale(1.15) !important;
+      box-shadow: 0 10px 30px rgba(217, 119, 6, 0.5);
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      animation: fadeIn 1.6s ease-out;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+      border: 2px solid rgba(217, 119, 6, 0.3);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      border-color: #f59e0b;
+      box-shadow: 0 20px 40px rgba(217, 119, 6, 0.4);
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(217, 119, 6, 0.1) 100%);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+      animation: countUp 1.5s ease-out;
+    }
+
+    @keyframes countUp {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .detail-card {
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.4);
+      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .detail-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 1rem;
+    }
+
+    .detail-card p {
+      color: rgba(226, 232, 240, 0.9);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .detail-tag {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    /* Documentation Styles */
+    .doc-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #3b82f6;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      animation: slideInLeft 0.6s ease-out backwards;
+    }
+
+    .doc-section:nth-child(1) { animation-delay: 0.1s; }
+    .doc-section:nth-child(2) { animation-delay: 0.2s; }
+    .doc-section:nth-child(3) { animation-delay: 0.3s; }
+    .doc-section:nth-child(4) { animation-delay: 0.4s; }
+    .doc-section:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .doc-section h3 {
+      color: #60a5fa;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .doc-section p {
+      color: #e2e8f0;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .doc-section ul {
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+
+    .doc-section li {
+      margin-bottom: 0.75rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .doc-section strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .logo-text {
+        font-size: 2.5rem;
+      }
+
+      .hero-section {
+        height: 400px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .platform-diagram {
+        height: 350px;
+      }
+
+      .central-node {
+        width: 140px;
+        height: 140px;
+        font-size: 1rem;
+      }
+
+      .connection-node {
+        width: 90px;
+        height: 90px;
+        font-size: 0.75rem;
+        padding: 0.75rem;
+      }
+
+      .modal-content {
+        padding: 2rem;
+      }
+
+      .modal-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-text">NPAI</div>
+      <div class="subtitle">
+        Национальная интеллектуальная платформа для автоматизации, аналитики и мониторинга промышленности
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="tab-button active" onclick="switchTab('overview')">Обзор</button>
+        <button class="tab-button" onclick="switchTab('modules')">Модули</button>
+        <button class="tab-button" onclick="switchTab('documentation')">Документация</button>
+      </nav>
+    </div>
+
+    <!-- Overview Tab -->
+    <div id="overview-tab" class="tab-content active">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-bg">
+          <!-- Animated Data Points -->
+          <div class="data-point" style="top: 15%; left: 10%;"></div>
+          <div class="data-point" style="top: 30%; left: 40%; animation-delay: 0.5s;"></div>
+          <div class="data-point" style="top: 20%; left: 75%; animation-delay: 1s;"></div>
+          <div class="data-point" style="top: 55%; left: 20%; animation-delay: 1.5s;"></div>
+          <div class="data-point" style="top: 65%; left: 60%; animation-delay: 0.7s;"></div>
+          <div class="data-point" style="top: 75%; left: 85%; animation-delay: 1.2s;"></div>
+          
+          <!-- Data Flow Lines -->
+          <div class="data-line" style="top: 25%; left: 0; width: 45%; animation-delay: 0s;"></div>
+          <div class="data-line" style="top: 50%; left: 25%; width: 55%; animation-delay: 1s;"></div>
+          <div class="data-line" style="top: 70%; left: 5%; width: 40%; animation-delay: 0.5s;"></div>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-title">Будущее промышленности уже здесь</h1>
+          <p class="hero-description">
+            Интеграция искусственного интеллекта, аналитики больших данных и IoT-технологий 
+            для создания умных производств нового поколения
+          </p>
+        </div>
+      </div>
+
+      <!-- Infographic Section -->
+      <div class="infographic-section">
+        <h2 class="section-title">Экосистема платформы NPAI</h2>
+        
+        <div class="platform-diagram">
+          <div class="central-node">NPAI<br>Platform</div>
+
+          <!-- Connection Lines (SVG) -->
+          <svg style="position: absolute; width: 100%; height: 100%; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
+            <line x1="50%" y1="50%" x2="20%" y2="12%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+            <line x1="50%" y1="50%" x2="80%" y2="12%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+            <line x1="50%" y1="50%" x2="12%" y2="50%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+            <line x1="50%" y1="50%" x2="88%" y2="50%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+            <line x1="50%" y1="50%" x2="20%" y2="88%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+            <line x1="50%" y1="50%" x2="80%" y2="88%" stroke="#3b82f6" stroke-width="2" opacity="0.4" />
+          </svg>
+
+          <!-- Connection Nodes -->
+          <div class="connection-node" style="top: 3%; left: 10%;">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <rect x="4" y="12" width="8" height="14" fill="#60a5fa" opacity="0.9"/>
+              <rect x="14" y="8" width="8" height="18" fill="#60a5fa"/>
+              <rect x="24" y="5" width="4" height="21" fill="#3b82f6"/>
+            </svg>
+            <div>Заводы</div>
+          </div>
+
+          <div class="connection-node" style="top: 3%; right: 10%;">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <rect x="6" y="10" width="20" height="14" rx="2" fill="none" stroke="#60a5fa" stroke-width="2"/>
+              <circle cx="16" cy="17" r="5" fill="#3b82f6"/>
+            </svg>
+            <div>Камеры</div>
+          </div>
+
+          <div class="connection-node" style="top: 50%; left: 3%; transform: translateY(-50%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <circle cx="16" cy="16" r="12" fill="none" stroke="#60a5fa" stroke-width="2"/>
+              <circle cx="16" cy="16" r="5" fill="#3b82f6"/>
+            </svg>
+            <div>IoT Датчики</div>
+          </div>
+
+          <div class="connection-node" style="top: 50%; right: 3%; transform: translateY(-50%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <rect x="6" y="8" width="20" height="20" rx="2" fill="none" stroke="#60a5fa" stroke-width="2"/>
+              <line x1="6" y1="13" x2="26" y2="13" stroke="#3b82f6" stroke-width="2"/>
+            </svg>
+            <div>ERP Системы</div>
+          </div>
+
+          <div class="connection-node" style="bottom: 3%; left: 10%;">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <rect x="6" y="12" width="20" height="16" rx="1" fill="none" stroke="#60a5fa" stroke-width="2"/>
+              <rect x="13" y="18" width="6" height="10" fill="#3b82f6"/>
+            </svg>
+            <div>Госорганы</div>
+          </div>
+
+          <div class="connection-node" style="bottom: 3%; right: 10%;">
+            <svg width="32" height="32" viewBox="0 0 32 32" style="margin-bottom: 0.5rem;">
+              <rect x="6" y="20" width="4" height="10" fill="#60a5fa"/>
+              <rect x="13" y="15" width="4" height="15" fill="#3b82f6"/>
+              <rect x="20" y="10" width="6" height="20" fill="#2563eb"/>
+            </svg>
+            <div>Отчетность</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <h2 class="section-title">Преимущества платформы</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">-30%</div>
+          <div class="stat-label">Снижение энергозатрат</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">+45%</div>
+          <div class="stat-label">Рост эффективности производства</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Круглосуточный мониторинг</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">-60%</div>
+          <div class="stat-label">Сокращение инцидентов</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Дополнительные детали</h2>
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h3>Технологический суверенитет</h3>
+          <p>Все данные остаются внутри Казахстана: локальные ЦОДы, шифрование и многоуровневый контроль ролей.</p>
+          <div class="detail-tags">
+            <span class="detail-tag">Локальный хостинг</span>
+            <span class="detail-tag">Air-gapped ready</span>
+            <span class="detail-tag">Audit logging</span>
+          </div>
+        </article>
+        <article class="detail-card">
+          <h3>Монетизация и экосистема</h3>
+          <p>SaaS-подписки (Free → Enterprise) дополняются Marketplace, кастомными модулями, интеграциями и обучением.</p>
+          <div class="detail-tags">
+            <span class="detail-tag">SaaS</span>
+            <span class="detail-tag">Marketplace</span>
+            <span class="detail-tag">Custom dev</span>
+          </div>
+        </article>
+        <article class="detail-card">
+          <h3>Дорожная карта</h3>
+          <p>Краткосрочные, среднесрочные и долгосрочные инициативы: расширение модулей, цифровые двойники и ИИ-советник.</p>
+          <div class="detail-tags">
+            <span class="detail-tag">Модернизация</span>
+            <span class="detail-tag">Digital twins</span>
+            <span class="detail-tag">National scale</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Modules Tab -->
+    <div id="modules-tab" class="tab-content">
+      <h2 class="section-title">Модули платформы NPAI</h2>
+      
+      <div class="modules-grid" id="modulesGrid">
+        <!-- Modules будут добавлены через JavaScript -->
+      </div>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div id="documentation-tab" class="tab-content">
+      <h2 class="section-title">Полная документация NPAI</h2>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M4 7h20M4 14h20M4 21h20" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Введение
+        </h3>
+        <p>
+          <strong>NPAI (National Platform Analytic Industrial with AI)</strong> — это национальная интеллектуальная 
+          экосистема для автоматизации, аналитики и мониторинга промышленности и бизнеса.
+        </p>
+        <p>
+          Платформа объединяет данные, ИИ-алгоритмы, визуализацию и отраслевые решения в едином пространстве, 
+          обеспечивая быстрый доступ к информации и инструментам для руководителей, инженеров, аналитиков и 
+          государственных органов.
+        </p>
+        
+        <h3>Проблемы, которые решает NPAI</h3>
+        <ul>
+          <li><strong>Фрагментация данных:</strong> Информация разбросана по разным системам (1С, ERP, датчики, камеры)</li>
+          <li><strong>Высокий порог входа:</strong> Внедрение ИИ-решений требует миллионов долларов и команды программистов</li>
+          <li><strong>Экологическая непрозрачность:</strong> Общество не имеет доступа к реальным данным о выбросах</li>
+          <li><strong>Ручной контроль качества:</strong> Обнаружение дефектов требует постоянного человеческого внимания</li>
+          <li><strong>Потеря знаний:</strong> Опыт уходит вместе с увольняющимися специалистами</li>
+          <li><strong>Энергетическая неэффективность:</strong> Скрытые потери энергии остаются незамеченными</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="10" stroke="#60a5fa" stroke-width="2" fill="none"/>
+            <path d="M14 10v4M14 18h.01" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Решение NPAI
+        </h3>
+        <p>NPAI создает единую экосистему, которая:</p>
+        <ul>
+          <li><strong>Объединяет</strong> все источники данных в одном интерфейсе</li>
+          <li><strong>Автоматизирует</strong> процессы с помощью готовых ИИ-модулей</li>
+          <li><strong>Делает доступным</strong> ИИ для малых и средних предприятий</li>
+          <li><strong>Обеспечивает прозрачность</strong> для государства и общества</li>
+          <li><strong>Работает офлайн</strong> для обеспечения безопасности данных</li>
+          <li><strong>Поддерживает</strong> русский и казахский языки</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="5" y="5" width="18" height="18" rx="2" stroke="#60a5fa" stroke-width="2" fill="none"/>
+            <path d="M10 13l2 2 6-6" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Миссия NPAI
+        </h3>
+        <p>
+          <strong>Создать единую, понятную и доступную платформу,</strong> которая помогает компаниям внедрять ИИ 
+          без программистов, сокращать издержки, контролировать заводы и улучшать экологическую ситуацию.
+        </p>
+        <p>
+          Сделать Казахстан и СНГ лидерами в области промышленного ИИ, обеспечив технологическую независимость, 
+          экологическую прозрачность и экономическую эффективность.
+        </p>
+      </div>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 4L4 9l10 5 10-5-10-5z" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M4 19l10 5 10-5M4 14l10 5 10-5" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Технологический суверенитет
+        </h3>
+        <p>
+          В условиях геополитической нестабильности NPAI обеспечивает полный технологический суверенитет:
+        </p>
+        <ul>
+          <li><strong>Локальное хостирование данных</strong> — все данные хранятся на серверах в Казахстане</li>
+          <li><strong>Собственные модели ИИ</strong> — независимость от зарубежных API (OpenAI, Google)</li>
+          <li><strong>Офлайн-режим</strong> — полная работа без интернета для критически важных объектов</li>
+          <li><strong>Контроль исходного кода</strong> — аудит кода для госструктур</li>
+          <li><strong>Шифрование</strong> — End-to-end шифрование всех данных</li>
+          <li><strong>Локализация</strong> — полная поддержка казахского и русского языков</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="4" width="20" height="20" rx="2" stroke="#60a5fa" stroke-width="2" fill="none"/>
+            <path d="M4 12h20M12 4v20" stroke="#60a5fa" stroke-width="2"/>
+          </svg>
+          Монетизация (SaaS модель)
+        </h3>
+        <p>Гибкая система тарифов для компаний любого размера:</p>
+        <ul>
+          <li><strong>FREE</strong> — Для малых предприятий (1 объект, базовые функции)</li>
+          <li><strong>PRO ($99/мес)</strong> — Для средних заводов (до 3 объектов, все модули аналитики)</li>
+          <li><strong>BUSINESS ($499/мес)</strong> — Для крупных предприятий (неограниченно, все модули + API)</li>
+          <li><strong>ENTERPRISE</strong> — Для корпораций (индивидуальная разработка, on-premise)</li>
+        </ul>
+        <p>
+          <strong>Дополнительные источники дохода:</strong> Marketplace (30% комиссия), кастомные модули, 
+          платные интеграции, обучение и консалтинг.
+        </p>
+      </div>
+
+      <div class="doc-section">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 4v20M7 7l7 7-7 7M21 7l-7 7 7 7" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Будущее развитие
+        </h3>
+        <p><strong>Краткосрочная перспектива (6-12 месяцев):</strong></p>
+        <ul>
+          <li>Мобильное приложение NPAI (iOS/Android)</li>
+          <li>Расширение Marketplace</li>
+          <li>Улучшение точности ИИ-моделей</li>
+        </ul>
+        
+        <p><strong>Среднесрочная перспектива (1-2 года):</strong></p>
+        <ul>
+          <li>Собственные модели ИИ для промышленности</li>
+          <li>Модуль прогнозирования аварий</li>
+          <li>Национальная ESG-отчетность</li>
+        </ul>
+        
+        <p><strong>Долгосрочная перспектива (3-5 лет):</strong></p>
+        <ul>
+          <li>Цифровые двойники заводов (Digital Twins)</li>
+          <li>Национальная сеть предприятий</li>
+          <li>ИИ-советник для руководителей</li>
+          <li>Экспансия на СНГ и дальнее зарубежье</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="moduleModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-header">
+        <div class="modal-icon" id="modalIcon"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    // Module data с полными описаниями из документации
+    const moduleData = {
+      eco: {
+        name: 'Экологический мониторинг (NPAI Eco)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="ecoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#ecoGrad)" opacity="0.2"/><path d="M 45 18 Q 33 30 33 42 Q 33 54 45 66 Q 57 54 57 42 Q 57 30 45 18 Z" fill="url(#ecoGrad)"/><circle cx="39" cy="42" r="2" fill="white"/><circle cx="51" cy="45" r="1.5" fill="white"/><rect x="43" y="54" width="4" height="18" fill="url(#ecoGrad)"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Комплексная система мониторинга экологической ситуации в реальном времени.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Визуализация загрязнения воздуха:</strong> Карта выбросов в реальном времени, индексы качества воздуха (AQI), прогнозирование распространения загрязнений</li>
+            <li><strong>Мониторинг выбросов:</strong> Данные с датчиков предприятий, интеграция с государственными системами, автоматическое сравнение с нормативами</li>
+            <li><strong>Публичная карта:</strong> Доступ для жителей городов, информация о качестве воздуха, прозрачность деятельности предприятий</li>
+            <li><strong>Персонализированный кабинет:</strong> Детальная аналитика, прогнозы и рекомендации, автоматическая генерация отчетов</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>IoT-датчики, спутниковые данные, машинное обучение для прогнозирования</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Прозрачность для общества<br>
+          ✅ Соответствие экологическим стандартам<br>
+          ✅ Предотвращение штрафов<br>
+          ✅ Улучшение репутации компании</p>
+        `
+      },
+      video: {
+        name: 'Видеоаналитика (NPAI Vision)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="videoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#1d4ed8"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#videoGrad)" opacity="0.2"/><rect x="23" y="30" width="44" height="30" rx="3" fill="none" stroke="url(#videoGrad)" stroke-width="3"/><circle cx="35" cy="45" r="6" fill="url(#videoGrad)"/><path d="M 52 40 L 62 35 L 62 55 L 52 50 Z" fill="url(#videoGrad)"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Интеллектуальная система анализа видеопотоков с использованием Computer Vision и Deep Learning.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Контроль качества продукции:</strong> Автоматическое обнаружение дефектов, классификация брака по типам, измерение размеров и параметров</li>
+            <li><strong>Техника безопасности:</strong> Детекция отсутствия СИЗ (каска, жилет, очки), обнаружение людей в опасных зонах, автоматические предупреждения</li>
+            <li><strong>Мониторинг оборудования:</strong> Детекция аномалий в работе станков, контроль уровня заполнения резервуаров, обнаружение утечек</li>
+            <li><strong>Предупреждение аварий:</strong> Детекция дыма и огня, обнаружение падения объектов, система экстренных уведомлений</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Computer Vision, Deep Learning (YOLO, ResNet), Real-time video processing</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Снижение брака на 30-50%<br>
+          ✅ Предотвращение аварий<br>
+          ✅ Автоматизация контроля качества<br>
+          ✅ Повышение безопасности персонала</p>
+        `
+      },
+      acoustic: {
+        name: 'Акустическая диагностика (NPAI Acoustic)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="soundGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8b5cf6"/><stop offset="100%" style="stop-color:#6d28d9"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#soundGrad)" opacity="0.2"/><path d="M 28 35 L 28 55 L 38 55 L 50 67 L 50 23 L 38 35 Z" fill="url(#soundGrad)"/><path d="M 55 35 Q 61 41 61 45 Q 61 49 55 55" fill="none" stroke="url(#soundGrad)" stroke-width="3"/><path d="M 61 28 Q 70 37 70 45 Q 70 53 61 62" fill="none" stroke="url(#soundGrad)" stroke-width="3"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Система предиктивного обслуживания на основе анализа звука и вибраций оборудования.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Предиктивное обслуживание:</strong> Предсказание поломки подшипников за 2-3 недели, детекция износа редукторов и моторов, обнаружение дисбаланса роторов</li>
+            <li><strong>Обнаружение утечек:</strong> Детекция утечек газа по звуку (ультразвук), обнаружение протечек в трубопроводах, контроль герметичности</li>
+            <li><strong>Анализ режимов работы:</strong> Детекция аномальных режимов станков, контроль вибраций фундаментов, оптимизация работы турбин и генераторов</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Акустический анализ, спектральный анализ, FFT (Fast Fourier Transform), машинное обучение</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Предотвращение дорогостоящих простоев<br>
+          ✅ Увеличение срока службы оборудования<br>
+          ✅ Снижение затрат на ремонт до 40%<br>
+          ✅ Оптимизация графика обслуживания</p>
+        `
+      },
+      safety: {
+        name: 'Безопасность (NPAI Safety)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="safetyGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ef4444"/><stop offset="100%" style="stop-color:#dc2626"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#safetyGrad)" opacity="0.2"/><path d="M 45 18 L 62 26 L 62 44 Q 62 60 45 72 Q 28 60 28 44 L 28 26 Z" fill="url(#safetyGrad)"/><path d="M 38 45 L 42 51 L 52 38" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Комплексная система контроля безопасности труда и предотвращения производственных инцидентов.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Контроль СИЗ:</strong> Автоматическая фиксация отсутствия каски, детекция отсутствия защитных жилетов и очков, проверка страховочных тросов</li>
+            <li><strong>Детекция опасных ситуаций:</strong> Обнаружение людей в запрещенных зонах, контроль доступа к опасным объектам, детекция падения человека</li>
+            <li><strong>Умные устройства:</strong> Интеграция с умными касками, браслеты для отслеживания, датчики загазованности, системы экстренной связи</li>
+            <li><strong>Автоматическая отчетность:</strong> Журналы техники безопасности, статистика нарушений, отчеты для инспекций</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Computer Vision, IoT sensors, Edge Computing, real-time alerts</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Снижение травматизма на 40-60%<br>
+          ✅ Защита от юридических рисков<br>
+          ✅ Автоматизация отчетности<br>
+          ✅ Повышение культуры безопасности</p>
+        `
+      },
+      energy: {
+        name: 'Энергоменеджмент (NPAI Smart Grid)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="energyGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#energyGrad)" opacity="0.2"/><path d="M 50 18 L 33 45 L 45 45 L 40 72 L 57 40 L 45 40 Z" fill="url(#energyGrad)"/><path d="M 23 55 Q 28 50 33 55" fill="none" stroke="url(#energyGrad)" stroke-width="2"/><path d="M 57 55 Q 62 50 67 55" fill="none" stroke="url(#energyGrad)" stroke-width="2"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Система управления энергопотреблением для оптимизации затрат и повышения энергоэффективности.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Выявление потерь:</strong> Обнаружение оборудования работающего вхолостую, детекция утечек тепла, анализ пиковых нагрузок</li>
+            <li><strong>Прогнозирование нагрузок:</strong> Прогноз пиковых нагрузок для оптимизации тарифов, планирование энергопотребления, балансировка нагрузок</li>
+            <li><strong>Углеродный след:</strong> Автоматический расчет CO2-эквивалента, отчеты для ESG-стандартов, трекинг прогресса по снижению выбросов</li>
+            <li><strong>Управление ресурсами:</strong> Мониторинг водопотребления, контроль расхода сырья, оптимизация логистики</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>IoT-счетчики, машинное обучение, энергетическая аналитика, прогнозирование временных рядов</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Экономия 15-30% на энергозатратах<br>
+          ✅ Соответствие ESG-стандартам<br>
+          ✅ Снижение экологического следа<br>
+          ✅ Оптимизация тарифов</p>
+        `
+      },
+      digital: {
+        name: 'Цифровой технолог (NPAI Knowledge)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#06b6d4"/><stop offset="100%" style="stop-color:#0891b2"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#techGrad)" opacity="0.2"/><ellipse cx="45" cy="38" rx="17" ry="20" fill="url(#techGrad)"/><path d="M 45 56 Q 33 58 27 68 L 63 68 Q 57 58 45 56 Z" fill="url(#techGrad)"/><rect x="35" y="70" width="20" height="8" rx="2" fill="url(#techGrad)"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Интеллектуальная система управления знаниями предприятия на основе больших языковых моделей (LLM).</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Чат-бот для инженеров:</strong> Ответы на вопросы по ремонту, поиск в технической документации, показ схем и чертежей, история поломок</li>
+            <li><strong>Автоматическая генерация отчетов:</strong> Преобразование данных в отчеты, генерация документов для госорганов, создание презентаций, перевод (RU/KZ/EN)</li>
+            <li><strong>Онлайн-подсказчик:</strong> Инструкции при аварийных ситуациях, пошаговые руководства, обучение новых сотрудников, виртуальный наставник</li>
+            <li><strong>Сохранение знаний:</strong> Оцифровка опыта мастеров, база знаний предприятия, поиск по всем документам</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Large Language Models (LLaMA, Mistral), RAG (Retrieval-Augmented Generation), NLP, Vector Databases</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Сохранение экспертизы<br>
+          ✅ Ускорение обучения персонала<br>
+          ✅ Автоматизация документооборота<br>
+          ✅ Снижение времени решения проблем</p>
+        `
+      },
+      thermal: {
+        name: 'Тепловизор (NPAI Thermal)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="thermalGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f43f5e"/><stop offset="100%" style="stop-color:#be123c"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#thermalGrad)" opacity="0.2"/><rect x="25" y="30" width="40" height="32" rx="2" fill="url(#thermalGrad)"/><rect x="30" y="35" width="11" height="11" fill="#fbbf24" opacity="0.9"/><rect x="43" y="35" width="9" height="9" fill="#f97316" opacity="0.9"/><rect x="54" y="35" width="7" height="13" fill="#ef4444" opacity="0.9"/><rect x="30" y="48" width="13" height="11" fill="#f59e0b" opacity="0.9"/><rect x="45" y="48" width="15" height="11" fill="#dc2626" opacity="0.9"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Система мониторинга на основе тепловизионного контроля для предотвращения аварий и оптимизации энергопотребления.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Пожарная безопасность:</strong> Обнаружение перегрева контактов в электрощитовых, детекция горячих точек, раннее предупреждение о возгорании</li>
+            <li><strong>Обнаружение утечек:</strong> Поиск утечек тепла в зданиях, детекция прорывов теплотрасс, обнаружение утечек в изоляции</li>
+            <li><strong>Контроль процессов:</strong> Измерение уровня жидкости в закрытых резервуарах, контроль температуры в печах, мониторинг теплообменников</li>
+            <li><strong>Интеграция с дронами:</strong> Обследование высотных объектов, мониторинг крыш и фасадов, инспекция трубопроводов</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Тепловизионные камеры, дроны, компьютерное зрение, температурный анализ</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Предотвращение пожаров<br>
+          ✅ Энергоэффективность<br>
+          ✅ Безопасность персонала<br>
+          ✅ Раннее обнаружение проблем</p>
+        `
+      },
+      analytics: {
+        name: 'Аналитика (NPAI Analytics)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="analyticsGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2d7fc4"/><stop offset="100%" style="stop-color:#1a5490"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#analyticsGrad)" opacity="0.2"/><rect x="23" y="55" width="9" height="18" rx="2" fill="url(#analyticsGrad)"/><rect x="37" y="45" width="9" height="28" rx="2" fill="url(#analyticsGrad)"/><rect x="51" y="35" width="9" height="38" rx="2" fill="url(#analyticsGrad)"/><rect x="65" y="40" width="9" height="33" rx="2" fill="url(#analyticsGrad)"/><path d="M 27 50 L 41 40 L 55 30 L 69 35" fill="none" stroke="#60a5fa" stroke-width="3"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Централизованная система сбора, обработки и визуализации производственных данных.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Сбор данных:</strong> Импорт из 1С, ERP, SCADA, автоматическая загрузка с датчиков, интеграция с логистическими системами</li>
+            <li><strong>Производственные показатели:</strong> OEE (Overall Equipment Effectiveness), производительность линий, время простоя, качество продукции</li>
+            <li><strong>Сравнительная аналитика:</strong> Бенчмаркинг между цехами, сравнение с конкурентами (анонимно), отраслевые стандарты</li>
+            <li><strong>Готовые отчеты:</strong> KPI-дашборды для руководства, финансовые показатели для аудита, статистика для госорганов</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>ETL-процессы, Data Warehouse, Business Intelligence, интерактивные дашборды</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Информированные решения<br>
+          ✅ Выявление узких мест<br>
+          ✅ Оптимизация процессов<br>
+          ✅ Единая картина бизнеса</p>
+        `
+      },
+      marketplace: {
+        name: 'Marketplace (NPAI Marketplace)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="marketGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#14b8a6"/><stop offset="100%" style="stop-color:#0d9488"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#marketGrad)" opacity="0.2"/><path d="M 23 35 L 28 23 L 62 23 L 67 35 Z" fill="url(#marketGrad)"/><rect x="25" y="35" width="40" height="30" rx="2" fill="url(#marketGrad)"/><circle cx="37" cy="53" r="5" fill="white" opacity="0.9"/><circle cx="53" cy="53" r="5" fill="white" opacity="0.9"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Платформа для разработчиков и компаний по созданию, продаже и интеграции кастомных решений.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Для разработчиков:</strong> API и SDK для создания модулей, шаблоны и примеры кода, система тестирования, документация и поддержка</li>
+            <li><strong>Для компаний:</strong> Каталог готовых решений, поиск по отраслям и задачам, демо-версии и тестирование, прямая покупка</li>
+            <li><strong>Монетизация:</strong> Комиссия платформы (30%), подписки на модули, платные интеграции, кастомная разработка</li>
+            <li><strong>Автоматическая интеграция:</strong> Установка в один клик, автоматическая настройка, совместимость с NPAI, обновления</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Microservices, API Gateway, Payment Gateway, Docker, Kubernetes</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Экосистема решений<br>
+          ✅ Монетизация для разработчиков<br>
+          ✅ Расширяемость платформы<br>
+          ✅ Кастомные решения под задачи</p>
+        `
+      },
+      offline: {
+        name: 'Офлайн-режим (NPAI Offline)',
+        icon: `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="offlineGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#64748b"/><stop offset="100%" style="stop-color:#475569"/></linearGradient></defs><circle cx="45" cy="45" r="40" fill="url(#offlineGrad)" opacity="0.2"/><ellipse cx="45" cy="40" rx="24" ry="13" fill="url(#offlineGrad)"/><path d="M 21 40 Q 21 57 45 63 Q 69 57 69 40" fill="url(#offlineGrad)"/><rect x="40" y="52" width="10" height="9" rx="2" fill="#fbbf24"/></svg>`,
+        description: `
+          <h3>Описание модуля</h3>
+          <p>Система работы без интернета с безопасной синхронизацией данных для критически важных предприятий.</p>
+          
+          <h3>Основные функции</h3>
+          <ul>
+            <li><strong>Полная офлайн-работа:</strong> Все модули работают без интернета, локальное хранение данных, локальная обработка ИИ, автономные дашборды</li>
+            <li><strong>Безопасная синхронизация:</strong> Шифрование данных при передаче, синхронизация по расписанию, конфликт-резолюция, версионирование</li>
+            <li><strong>Конфиденциальность:</strong> Локальные хранилища, шифрование на уровне данных, контроль доступа, аудит всех операций</li>
+            <li><strong>Удаленная работа:</strong> Составление отчетов офлайн, синхронизация при подключении, работа в полевых условиях</li>
+          </ul>
+          
+          <h3>Технологии</h3>
+          <p>Edge Computing, End-to-End Encryption, Conflict Resolution, локальные базы данных</p>
+          
+          <h3>Ценность</h3>
+          <p>✅ Безопасность данных<br>
+          ✅ Работа в изолированных сетях<br>
+          ✅ Соответствие требованиям безопасности<br>
+          ✅ Технологический суверенитет</p>
+        `
+      }
+    };
+
+    // Generate modules
+    function generateModules() {
+      const grid = document.getElementById('modulesGrid');
+      if (!grid) return;
+
+      const modules = [
+        { key: 'eco', color: '#10b981' },
+        { key: 'video', color: '#3b82f6' },
+        { key: 'acoustic', color: '#8b5cf6' },
+        { key: 'safety', color: '#ef4444' },
+        { key: 'energy', color: '#f59e0b' },
+        { key: 'digital', color: '#06b6d4' },
+        { key: 'thermal', color: '#f43f5e' },
+        { key: 'analytics', color: '#2d7fc4' },
+        { key: 'marketplace', color: '#14b8a6' },
+        { key: 'offline', color: '#64748b' }
+      ];
+
+      modules.forEach(mod => {
+        const data = moduleData[mod.key];
+        const card = document.createElement('div');
+        card.className = 'module-card';
+        card.onclick = () => openModuleModal(mod.key);
+        card.innerHTML = `
+          <div class="module-icon">${data.icon}</div>
+          <div class="module-name">${data.name}</div>
+          <div class="module-desc">${data.description.match(/<p>(.*?)<\/p>/)?.[1] || ''}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Switch tabs
+    function switchTab(tabName) {
+      // Remove active from all
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      // Add active to selected
+      event.target.classList.add('active');
+      document.getElementById(`${tabName}-tab`).classList.add('active');
+    }
+
+    // Open module modal
+    function openModuleModal(moduleKey) {
+      const module = moduleData[moduleKey];
+      if (!module) return;
+      
+      const modal = document.getElementById('moduleModal');
+      document.getElementById('modalIcon').innerHTML = module.icon;
+      document.getElementById('modalTitle').textContent = module.name;
+      document.getElementById('modalBody').innerHTML = module.description;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('moduleModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on outside click
+    document.getElementById('moduleModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      generateModules();
+    });
+  </script>
+</body>
+</html>

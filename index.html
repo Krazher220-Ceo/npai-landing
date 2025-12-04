@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAI - Национальная интеллектуальная платформа для промышленности</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>NPAI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#modules">Модули</a></li>
+                <li><a href="gallery.html" target="_blank" style="color: #f59e0b;">
+                    <i class="fas fa-images"></i> Галерея
+                </a></li>
+                <li><a href="#features">Преимущества</a></li>
+                <li><a href="#pricing">Тарифы</a></li>
+                <li><a href="#documentation">Документация</a></li>
+                <li><a href="#license">Лицензия</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">NPAI</span>
+                </h1>
+                <h2 class="hero-subtitle">National Platform Analytic Industrial with AI</h2>
+                <p class="hero-description">
+                    Национальная интеллектуальная платформа для автоматизации, аналитики и мониторинга промышленности
+                </p>
+                <div class="hero-buttons">
+                    <a href="#modules" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Узнать больше
+                    </a>
+                    <a href="gallery.html" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <i class="fas fa-images"></i> Интерактивная галерея
+                    </a>
+                    <a href="#pricing" class="btn btn-secondary">
+                        <i class="fas fa-tags"></i> Тарифы
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Модулей ИИ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30-50%</div>
+                        <div class="stat-label">Снижение брака</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Мониторинг</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>Проблема и решение</h2>
+                <p>NPAI решает ключевые вызовы современной промышленности</p>
+            </div>
+            <div class="ps-grid">
+                <div class="ps-card problem">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Проблемы</h3>
+                    <ul>
+                        <li><i class="fas fa-times-circle"></i> Фрагментация данных по разным системам</li>
+                        <li><i class="fas fa-times-circle"></i> Высокий порог входа для внедрения ИИ</li>
+                        <li><i class="fas fa-times-circle"></i> Экологическая непрозрачность</li>
+                        <li><i class="fas fa-times-circle"></i> Ручной контроль качества</li>
+                        <li><i class="fas fa-times-circle"></i> Потеря экспертных знаний</li>
+                        <li><i class="fas fa-times-circle"></i> Энергетическая неэффективность</li>
+                    </ul>
+                </div>
+                <div class="ps-card solution">
+                    <h3><i class="fas fa-check-circle"></i> Решение NPAI</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Единая экосистема всех данных</li>
+                        <li><i class="fas fa-check"></i> Готовые ИИ-модули без программирования</li>
+                        <li><i class="fas fa-check"></i> Прозрачность для общества и государства</li>
+                        <li><i class="fas fa-check"></i> Автоматизация с помощью ИИ</li>
+                        <li><i class="fas fa-check"></i> Цифровая база знаний</li>
+                        <li><i class="fas fa-check"></i> Оптимизация ресурсов на 15-30%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="modules">
+        <div class="container">
+            <div class="section-header">
+                <h2>Модули NPAI</h2>
+                <p>10 интеллектуальных модулей для полной автоматизации предприятия</p>
+            </div>
+            <div class="modules-grid">
+                <!-- Module 1: NPAI Eco -->
+                <div class="module-card" data-module="eco">
+                    <div class="module-icon eco">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>NPAI Eco</h3>
+                    <p class="module-subtitle">Экологический мониторинг</p>
+                    <p>Комплексная система мониторинга экологической ситуации в реальном времени</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-wind"></i> Визуализация загрязнения воздуха</li>
+                        <li><i class="fas fa-chart-line"></i> Мониторинг выбросов</li>
+                        <li><i class="fas fa-map"></i> Публичная карта для жителей</li>
+                        <li><i class="fas fa-file-alt"></i> Автоматическая отчетность</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('eco')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 2: NPAI Analytics -->
+                <div class="module-card" data-module="analytics">
+                    <div class="module-icon analytics">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>NPAI Analytics</h3>
+                    <p class="module-subtitle">Промышленная аналитика</p>
+                    <p>Централизованная система сбора, обработки и визуализации производственных данных</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-database"></i> Сбор данных из всех систем</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Производственные KPI</li>
+                        <li><i class="fas fa-balance-scale"></i> Сравнительная аналитика</li>
+                        <li><i class="fas fa-clipboard-list"></i> Готовые отчеты</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('analytics')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 3: NPAI Vision -->
+                <div class="module-card" data-module="vision">
+                    <div class="module-icon vision">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>NPAI Vision</h3>
+                    <p class="module-subtitle">AI-видеоаналитика</p>
+                    <p>Интеллектуальный анализ видеопотоков для контроля качества и безопасности</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-search"></i> Обнаружение дефектов</li>
+                        <li><i class="fas fa-hard-hat"></i> Контроль безопасности</li>
+                        <li><i class="fas fa-cogs"></i> Мониторинг оборудования</li>
+                        <li><i class="fas fa-fire"></i> Предупреждение аварий</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('vision')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 4: NPAI Acoustic -->
+                <div class="module-card" data-module="acoustic">
+                    <div class="module-icon acoustic">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <h3>NPAI Acoustic</h3>
+                    <p class="module-subtitle">Акустическая диагностика</p>
+                    <p>Предиктивное обслуживание на основе анализа звука и вибраций оборудования</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-tools"></i> Предсказание поломок за 2-3 недели</li>
+                        <li><i class="fas fa-exclamation-circle"></i> Обнаружение утечек газа</li>
+                        <li><i class="fas fa-wave-square"></i> Анализ режимов работы</li>
+                        <li><i class="fas fa-bell"></i> Автоматические алерты</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('acoustic')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 5: NPAI Safety -->
+                <div class="module-card" data-module="safety">
+                    <div class="module-icon safety">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>NPAI Safety</h3>
+                    <p class="module-subtitle">Промышленная безопасность</p>
+                    <p>Расширенная система контроля безопасности с использованием компьютерного зрения</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-user-shield"></i> Контроль СИЗ</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Детекция опасных ситуаций</li>
+                        <li><i class="fas fa-mobile-alt"></i> Умные устройства безопасности</li>
+                        <li><i class="fas fa-file-contract"></i> Автоматическая отчетность</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('safety')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 6: NPAI Smart Grid -->
+                <div class="module-card" data-module="smartgrid">
+                    <div class="module-icon smartgrid">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>NPAI Smart Grid</h3>
+                    <p class="module-subtitle">Энергоменеджмент</p>
+                    <p>Оптимизация энергопотребления и управления ресурсами предприятия</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-search-minus"></i> Выявление энергетических потерь</li>
+                        <li><i class="fas fa-chart-area"></i> Прогнозирование нагрузок</li>
+                        <li><i class="fas fa-seedling"></i> Расчет углеродного следа</li>
+                        <li><i class="fas fa-percentage"></i> Экономия 15-30% на энергии</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('smartgrid')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 7: NPAI Knowledge -->
+                <div class="module-card" data-module="knowledge">
+                    <div class="module-icon knowledge">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>NPAI Knowledge</h3>
+                    <p class="module-subtitle">Цифровой Технолог (LLM)</p>
+                    <p>Интеллектуальная система управления знаниями на основе больших языковых моделей</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-comments"></i> Чат-бот для инженеров</li>
+                        <li><i class="fas fa-file-invoice"></i> Генерация отчетов</li>
+                        <li><i class="fas fa-graduation-cap"></i> Обучение сотрудников</li>
+                        <li><i class="fas fa-book"></i> База знаний предприятия</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('knowledge')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 8: NPAI Thermal -->
+                <div class="module-card" data-module="thermal">
+                    <div class="module-icon thermal">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h3>NPAI Thermal</h3>
+                    <p class="module-subtitle">Тепловизионный контроль</p>
+                    <p>Мониторинг на основе анализа тепловых изображений для предотвращения аварий</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-fire-extinguisher"></i> Пожарная безопасность</li>
+                        <li><i class="fas fa-tint"></i> Обнаружение утечек тепла</li>
+                        <li><i class="fas fa-temperature-high"></i> Контроль технологических процессов</li>
+                        <li><i class="fas fa-helicopter"></i> Интеграция с дронами</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('thermal')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 9: NPAI Marketplace -->
+                <div class="module-card" data-module="marketplace">
+                    <div class="module-icon marketplace">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>NPAI Marketplace</h3>
+                    <p class="module-subtitle">Маркетплейс решений</p>
+                    <p>Платформа для разработчиков по созданию, продаже и интеграции кастомных решений</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-code"></i> API и SDK для разработчиков</li>
+                        <li><i class="fas fa-shopping-cart"></i> Каталог готовых решений</li>
+                        <li><i class="fas fa-dollar-sign"></i> Монетизация модулей</li>
+                        <li><i class="fas fa-plug"></i> Автоматическая интеграция</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('marketplace')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Module 10: NPAI Offline -->
+                <div class="module-card" data-module="offline">
+                    <div class="module-icon offline">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>NPAI Offline</h3>
+                    <p class="module-subtitle">Офлайн-режим</p>
+                    <p>Система работы без интернета с безопасной синхронизацией данных</p>
+                    <ul class="module-features">
+                        <li><i class="fas fa-wifi-slash"></i> Полная офлайн-работа</li>
+                        <li><i class="fas fa-sync-alt"></i> Безопасная синхронизация</li>
+                        <li><i class="fas fa-user-secret"></i> Конфиденциальность данных</li>
+                        <li><i class="fas fa-laptop"></i> Удаленная работа</li>
+                    </ul>
+                    <button class="btn-details" onclick="showModuleDetails('offline')">
+                        Подробнее <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Уникальные преимущества</h2>
+                <p>Почему NPAI — лучший выбор для вашего предприятия</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Локализация</h3>
+                    <p>Полная поддержка русского и казахского языков. Интеграция с локальными системами и соответствие местным стандартам.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Простота внедрения</h3>
+                    <p>Готовые модули "из коробки" без программирования. Быстрое подключение за 5-30 минут.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Доступность</h3>
+                    <p>Бесплатный тариф для малых предприятий. Гибкая монетизация и масштабируемость от одного цеха до национальной сети.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Офлайн-работа, локальное хранение данных, шифрование на всех уровнях. Технологический суверенитет.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Комплексность</h3>
+                    <p>Единая платформа со всеми инструментами. Интеграция модулей и централизованная аналитика.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Экосистема</h3>
+                    <p>Marketplace для расширения функциональности. API, SDK и сообщество разработчиков.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Тарифные планы</h2>
+                <p>Выберите подходящий план для вашего бизнеса</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-badge free">Бесплатно</div>
+                    <h3>Free</h3>
+                    <div class="pricing-price">
+                        <span class="price">$0</span>
+                        <span class="period">/месяц</span>
+                    </div>
+                    <p class="pricing-description">Для малых предприятий и стартапов</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 предприятие</li>
+                        <li><i class="fas fa-check"></i> До 10 датчиков</li>
+                        <li><i class="fas fa-check"></i> 50 AI-запросов/месяц</li>
+                        <li><i class="fas fa-check"></i> Базовые дашборды</li>
+                        <li><i class="fas fa-check"></i> Публичная карта экологии</li>
+                        <li><i class="fas fa-times"></i> Приоритетная поддержка</li>
+                    </ul>
+                    <button class="btn btn-outline">Начать бесплатно</button>
+                </div>
+
+                <!-- PRO Plan -->
+                <div class="pricing-card popular">
+                    <div class="pricing-badge pro">Популярный</div>
+                    <h3>PRO</h3>
+                    <div class="pricing-price">
+                        <span class="price">$99</span>
+                        <span class="period">/месяц</span>
+                    </div>
+                    <p class="pricing-description">Для средних предприятий</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> До 3 предприятий</li>
+                        <li><i class="fas fa-check"></i> Неограниченные датчики</li>
+                        <li><i class="fas fa-check"></i> 1000 AI-запросов/месяц</li>
+                        <li><i class="fas fa-check"></i> Все модули аналитики</li>
+                        <li><i class="fas fa-check"></i> Видеоаналитика (до 10 камер)</li>
+                        <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+                    </ul>
+                    <button class="btn btn-primary">Выбрать PRO</button>
+                </div>
+
+                <!-- BUSINESS Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-badge business">Бизнес</div>
+                    <h3>BUSINESS</h3>
+                    <div class="pricing-price">
+                        <span class="price">$499</span>
+                        <span class="period">/месяц</span>
+                    </div>
+                    <p class="pricing-description">Для крупных предприятий</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Неограниченные предприятия</li>
+                        <li><i class="fas fa-check"></i> Неограниченные AI-запросы</li>
+                        <li><i class="fas fa-check"></i> Все модули NPAI</li>
+                        <li><i class="fas fa-check"></i> Видеоаналитика (безлимит)</li>
+                        <li><i class="fas fa-check"></i> API доступ</li>
+                        <li><i class="fas fa-check"></i> 24/7 поддержка</li>
+                    </ul>
+                    <button class="btn btn-outline">Выбрать BUSINESS</button>
+                </div>
+
+                <!-- ENTERPRISE Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-badge enterprise">Enterprise</div>
+                    <h3>ENTERPRISE</h3>
+                    <div class="pricing-price">
+                        <span class="price">Индивидуально</span>
+                    </div>
+                    <p class="pricing-description">Для крупнейших корпораций</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Все возможности BUSINESS</li>
+                        <li><i class="fas fa-check"></i> Кастомные модули</li>
+                        <li><i class="fas fa-check"></i> Собственные модели ИИ</li>
+                        <li><i class="fas fa-check"></i> On-premise развертывание</li>
+                        <li><i class="fas fa-check"></i> SLA гарантии</li>
+                        <li><i class="fas fa-check"></i> Персональная команда</li>
+                    </ul>
+                    <a href="tel:+77056697677" class="btn btn-outline">
+                        <i class="fas fa-phone"></i> Связаться с нами
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="documentation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Полная документация NPAI</h2>
+                <p>Подробное описание платформы, модулей и технологий</p>
+            </div>
+            <div class="doc-controls">
+                <button class="btn btn-secondary" onclick="toggleDocView()">
+                    <i class="fas fa-eye"></i> Показать/Скрыть документацию
+                </button>
+                <a href="NPAI_Project_Description.md" download class="btn btn-outline">
+                    <i class="fas fa-download"></i> Скачать MD
+                </a>
+                <a href="NPAI_Project_Description.docx" download class="btn btn-outline">
+                    <i class="fas fa-file-word"></i> Скачать DOCX
+                </a>
+            </div>
+            <div id="documentationContent" class="doc-content" style="display: none;">
+                <div class="doc-loader">
+                    <i class="fas fa-spinner fa-spin"></i> Загрузка документации...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Section -->
+    <section id="license" class="license-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-shield-alt"></i> Защита интеллектуальной собственности</h2>
+                <p>NPAI защищено авторским правом и законами об интеллектуальной собственности</p>
+            </div>
+            <div class="license-content">
+                <div class="license-card">
+                    <div class="license-icon">
+                        <i class="fas fa-copyright"></i>
+                    </div>
+                    <h3>Авторские права</h3>
+                    <p>Все материалы NPAI, включая концепции, идеи, бизнес-модели, алгоритмы, дизайн и код, защищены авторским правом © 2024 NPAI. Все права защищены.</p>
+                </div>
+                <div class="license-card">
+                    <div class="license-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3>Запрещено без разрешения</h3>
+                    <ul>
+                        <li>Копирование, воспроизведение или распространение материалов</li>
+                        <li>Создание производных работ на основе NPAI</li>
+                        <li>Использование концепций и идей в коммерческих целях</li>
+                        <li>Использование названия, логотипов или торговых марок</li>
+                    </ul>
+                </div>
+                <div class="license-card">
+                    <div class="license-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Коммерческое использование</h3>
+                    <p>Любое коммерческое использование материалов NPAI требует письменного разрешения от владельца авторских прав.</p>
+                    <p><strong>Для получения лицензии обращайтесь:</strong></p>
+                    <p>
+                        <i class="fas fa-envelope"></i> <a href="mailto:Krazher220@icloud.com">Krazher220@icloud.com</a><br>
+                        <i class="fas fa-phone"></i> <a href="tel:+77056697677">+7 705 669 76 77</a>
+                    </p>
+                </div>
+                <div class="license-card warning">
+                    <div class="license-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Ответственность за нарушение</h3>
+                    <p>Нарушение авторских прав влечет гражданскую и уголовную ответственность в соответствии с законодательством Республики Казахстан и международными соглашениями.</p>
+                    <a href="LICENSE" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">
+                        <i class="fas fa-file-contract"></i> Полный текст лицензионного соглашения
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Готовы начать цифровую трансформацию?</h2>
+            <p>Присоединяйтесь к NPAI и сделайте ваше предприятие умнее уже сегодня</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Начать бесплатно
+                </button>
+                <a href="tel:+77056697677" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-phone"></i> Связаться с нами
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><i class="fas fa-brain"></i> NPAI</h4>
+                    <p>Национальная интеллектуальная платформа для автоматизации, аналитики и мониторинга промышленности</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Платформа</h4>
+                    <ul>
+                        <li><a href="#modules">Модули</a></li>
+                        <li><a href="#features">Преимущества</a></li>
+                        <li><a href="#pricing">Тарифы</a></li>
+                        <li><a href="#documentation">Документация</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ресурсы</h4>
+                    <ul>
+                        <li><a href="#">API документация</a></li>
+                        <li><a href="#">SDK</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                        <li><a href="#">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:Krazher220@icloud.com" style="color: inherit; text-decoration: none;">Krazher220@icloud.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+77056697677" style="color: inherit; text-decoration: none;">+7 705 669 76 77</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> г.Костанай - Костанайская область</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NPAI. Все права защищены. | 
+                   <a href="LICENSE" target="_blank" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline;">Лицензионное соглашение</a> | 
+                   <a href="#license" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline;">О защите интеллектуальной собственности</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Module Details -->
+    <div id="moduleModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
+
