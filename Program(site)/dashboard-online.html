@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAI - Онлайн Дашборд | Упрощенная версия</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        .online-dashboard {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%);
+            padding: 2rem;
+        }
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        .dashboard-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .filter-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .filter-group select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .summary-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .summary-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .summary-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .summary-card-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .data-table {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .data-table th {
+            font-weight: 600;
+            color: var(--text-dark);
+            background: #f9fafb;
+        }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .status-ok {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .user-menu {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="online-dashboard">
+        <div class="user-menu" id="user-menu">
+            <div class="user-avatar" id="user-avatar">U</div>
+            <div>
+                <div style="font-weight: 600; font-size: 0.9rem;" id="user-name">Пользователь</div>
+                <div style="font-size: 0.75rem; color: var(--text-light);">Онлайн режим</div>
+            </div>
+            <button onclick="logoutUser()" style="margin-left: 1rem; padding: 0.5rem 1rem; background: #fee2e2; color: #991b1b; border: none; border-radius: 8px; cursor: pointer;">Выйти</button>
+        </div>
+        
+        <div class="dashboard-header">
+            <h1>🌐 Онлайн Дашборд</h1>
+            <p>Отфильтрованная информация для быстрого доступа</p>
+        </div>
+        
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>Тип данных:</label>
+                <select id="data-type-filter">
+                    <option value="all">Все</option>
+                    <option value="eco">Экология</option>
+                    <option value="production">Производство</option>
+                    <option value="energy">Энергия</option>
+                    <option value="safety">Безопасность</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Период:</label>
+                <select id="period-filter">
+                    <option value="today">Сегодня</option>
+                    <option value="week">Неделя</option>
+                    <option value="month">Месяц</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Статус:</label>
+                <select id="status-filter">
+                    <option value="all">Все</option>
+                    <option value="ok">Норма</option>
+                    <option value="warning">Предупреждение</option>
+                    <option value="error">Ошибка</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-card-icon">📊</div>
+                <div class="summary-card-value" id="total-readings">0</div>
+                <div class="summary-card-label">Всего показаний</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">✅</div>
+                <div class="summary-card-value" id="normal-readings">0</div>
+                <div class="summary-card-label">В норме</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">⚠️</div>
+                <div class="summary-card-value" id="warning-readings">0</div>
+                <div class="summary-card-label">Предупреждения</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">❌</div>
+                <div class="summary-card-value" id="error-readings">0</div>
+                <div class="summary-card-label">Ошибки</div>
+            </div>
+        </div>
+        
+        <div class="data-table">
+            <h2 style="margin-bottom: 1rem;">Последние данные</h2>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Время</th>
+                        <th>Тип</th>
+                        <th>Значение</th>
+                        <th>Статус</th>
+                        <th>Устройство</th>
+                    </tr>
+                </thead>
+                <tbody id="data-table-body">
+                    <!-- Данные будут загружены динамически -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="assets/js/auth-utils.js"></script>
+    <script src="assets/js/dashboard-online.js"></script>
+</body>
+</html>
+

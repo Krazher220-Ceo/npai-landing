@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAI - Офлайн Дашборд | Полная версия</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            background: #f9fafb;
+        }
+        .sidebar {
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .nav-item {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .main-content {
+            padding: 2rem;
+        }
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-header p {
+            color: var(--text-light);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .stat-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .stat-card-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .stat-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .module-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .module-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .module-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .module-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        .btn-secondary {
+            background: #f3f4f6;
+            color: var(--text-dark);
+        }
+        .user-profile {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span>🧠</span>
+                    <span>NPAI</span>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem;">
+                    Офлайн режим
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <span>📊</span>
+                    <span>Главная панель</span>
+                </a>
+                <a href="#eco" class="nav-item" data-section="eco">
+                    <span>🌱</span>
+                    <span>Экология</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    <span>📈</span>
+                    <span>Аналитика</span>
+                </a>
+                <a href="#vision" class="nav-item" data-section="vision">
+                    <span>👁️</span>
+                    <span>Видеоаналитика</span>
+                </a>
+                <a href="#acoustic" class="nav-item" data-section="acoustic">
+                    <span>🔊</span>
+                    <span>Акустика</span>
+                </a>
+                <a href="#safety" class="nav-item" data-section="safety">
+                    <span>🛡️</span>
+                    <span>Безопасность</span>
+                </a>
+                <a href="#smartgrid" class="nav-item" data-section="smartgrid">
+                    <span>⚡</span>
+                    <span>Энергоменеджмент</span>
+                </a>
+                <a href="#knowledge" class="nav-item" data-section="knowledge">
+                    <span>🤖</span>
+                    <span>Цифровой технолог</span>
+                </a>
+                <a href="#thermal" class="nav-item" data-section="thermal">
+                    <span>🌡️</span>
+                    <span>Тепловизор</span>
+                </a>
+                <a href="#marketplace" class="nav-item" data-section="marketplace">
+                    <span>🛒</span>
+                    <span>Marketplace</span>
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <span>⚙️</span>
+                    <span>Настройки</span>
+                </a>
+            </nav>
+            
+            <div class="user-profile">
+                <div class="user-info" id="user-profile-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+                    <div>
+                        <div style="font-weight: 600;" id="user-name">Пользователь</div>
+                        <div style="font-size: 0.85rem; color: var(--text-light);" id="user-plan">Free Plan</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="logoutUser()">Выйти</button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div id="dashboard-section" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1>Офлайн Дашборд</h1>
+                    <p>Полный доступ ко всем модулям и функциям платформы</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Активные модули</div>
+                        </div>
+                        <div class="stat-card-value" id="active-modules">10</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Подключенные устройства</div>
+                        </div>
+                        <div class="stat-card-value" id="connected-devices">24</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Активные алерты</div>
+                        </div>
+                        <div class="stat-card-value" id="active-alerts">2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Экономия энергии</div>
+                        </div>
+                        <div class="stat-card-value" id="energy-savings">23%</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h2 style="margin-bottom: 1rem;">Все модули</h2>
+                    <div class="modules-grid" id="modules-grid">
+                        <!-- Модули будут загружены динамически -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Другие секции будут загружаться динамически -->
+            <div id="content-sections"></div>
+        </main>
+    </div>
+    
+    <script src="assets/js/auth-utils.js"></script>
+    <script src="assets/js/dashboard-offline.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAI Platform - Панель управления</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>NPAI</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-module="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Главная панель</span>
+            </a>
+            
+            <div class="nav-section">Мониторинг</div>
+            <a href="#" class="nav-item" data-module="eco">
+                <i class="fas fa-leaf"></i>
+                <span>Экология</span>
+                <span class="badge">Live</span>
+            </a>
+            <a href="#" class="nav-item" data-module="analytics">
+                <i class="fas fa-chart-bar"></i>
+                <span>Аналитика</span>
+            </a>
+            
+            <div class="nav-section">AI Модули</div>
+            <a href="#" class="nav-item" data-module="vision">
+                <i class="fas fa-video"></i>
+                <span>Видеоаналитика</span>
+            </a>
+            <a href="#" class="nav-item" data-module="acoustic">
+                <i class="fas fa-volume-up"></i>
+                <span>Акустика</span>
+            </a>
+            <a href="#" class="nav-item" data-module="thermal">
+                <i class="fas fa-thermometer-half"></i>
+                <span>Тепловизор</span>
+            </a>
+            <a href="#" class="nav-item" data-module="knowledge">
+                <i class="fas fa-brain"></i>
+                <span>Цифровой технолог</span>
+            </a>
+            
+            <div class="nav-section">Управление</div>
+            <a href="#" class="nav-item" data-module="safety">
+                <i class="fas fa-shield-alt"></i>
+                <span>Безопасность</span>
+            </a>
+            <a href="#" class="nav-item" data-module="smartgrid">
+                <i class="fas fa-bolt"></i>
+                <span>Энергоменеджмент</span>
+            </a>
+            
+            <div class="nav-section">Платформа</div>
+            <a href="#" class="nav-item" data-module="marketplace">
+                <i class="fas fa-store"></i>
+                <span>Marketplace</span>
+            </a>
+            <a href="#" class="nav-item" data-module="settings">
+                <i class="fas fa-cog"></i>
+                <span>Настройки</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <div class="user-name">Администратор</div>
+                    <div class="user-role">Enterprise Plan</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title" id="pageTitle">Главная панель</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск...">
+                </div>
+                <button class="topbar-btn" title="Уведомления">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="topbar-btn" title="Настройки">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="topbar-btn" title="Помощь">
+                    <i class="fas fa-question-circle"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Module Content -->
+        <div class="content-area" id="contentArea">
+            <!-- Dashboard Module (Default) -->
+            <div class="module-content active" id="dashboard-module">
+                <div class="dashboard-header">
+                    <h2>Добро пожаловать в NPAI Platform</h2>
+                    <p>Общая статистика и метрики вашего предприятия</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Активные предприятия</div>
+                            <div class="stat-value">3</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 12% за месяц
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Качество воздуха</div>
+                            <div class="stat-value">Хорошее</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-check-circle"></i> В норме
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Активные алерты</div>
+                            <div class="stat-value">2</div>
+                            <div class="stat-change neutral">
+                                <i class="fas fa-info-circle"></i> Требуют внимания
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Экономия энергии</div>
+                            <div class="stat-value">23%</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> За последний месяц
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Производственные показатели</h3>
+                            <select class="chart-period">
+                                <option>Последние 7 дней</option>
+                                <option>Последний месяц</option>
+                                <option>Последний год</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="productionChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Энергопотребление</h3>
+                            <select class="chart-period">
+                                <option>Последние 24 часа</option>
+                                <option>Последняя неделя</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="energyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-panel">
+                    <div class="insights-header">
+                        <h3><i class="fas fa-sparkles"></i> Микро-инсайты для оператора</h3>
+                    </div>
+                    <div class="insight-grid">
+                        <article class="insight-card">
+                            <div class="insight-title">Технологический суверенитет</div>
+                            <p>Данные хранятся в Казахстане, доступ имеют только авторизованные операторы и госорганы.</p>
+                            <span class="insight-pill success">Локальное хранилище</span>
+                        </article>
+                        <article class="insight-card">
+                            <div class="insight-title">Offline-ready</div>
+                            <p>Система работает без интернета, синхронизация проходит по расписанию с шифрованием.</p>
+                            <span class="insight-pill info">Air-gapped</span>
+                        </article>
+                        <article class="insight-card">
+                            <div class="insight-title">AI + операционка</div>
+                            <p>10 модулей, 24/7 поддержка и marketplace с готовыми решениями.</p>
+                            <span class="insight-pill">AI Modules</span>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h3><i class="fas fa-history"></i> Последние события</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Модуль видеоаналитики обнаружил 0 дефектов</div>
+                                <div class="activity-time">2 минуты назад</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Превышен допустимый уровень шума на линии 3</div>
+                                <div class="activity-time">15 минут назад</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i class="fas fa-info"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Начато профилактическое обслуживание насоса #12</div>
+                                <div class="activity-time">1 час назад</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Экологический отчет отправлен в Министерство</div>
+                                <div class="activity-time">3 часа назад</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3><i class="fas fa-bolt"></i> Быстрые действия</h3>
+                    <div class="actions-grid">
+                        <button class="action-btn" onclick="navigateToModule('eco')">
+                            <i class="fas fa-leaf"></i>
+                            <span>Экологический мониторинг</span>
+                        </button>
+                        <button class="action-btn" onclick="navigateToModule('vision')">
+                            <i class="fas fa-video"></i>
+                            <span>Видеоаналитика</span>
+                        </button>
+                        <button class="action-btn" onclick="navigateToModule('knowledge')">
+                            <i class="fas fa-brain"></i>
+                            <span>Спросить AI-технолога</span>
+                        </button>
+                        <button class="action-btn" onclick="generateReport()">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Сгенерировать отчет</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other modules will be loaded dynamically -->
+            <div class="module-content" id="eco-module"></div>
+            <div class="module-content" id="analytics-module"></div>
+            <div class="module-content" id="vision-module"></div>
+            <div class="module-content" id="acoustic-module"></div>
+            <div class="module-content" id="thermal-module"></div>
+            <div class="module-content" id="knowledge-module"></div>
+            <div class="module-content" id="safety-module"></div>
+            <div class="module-content" id="smartgrid-module"></div>
+            <div class="module-content" id="marketplace-module"></div>
+            <div class="module-content" id="settings-module"></div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Загрузка модуля...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="scripts/core.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/modules.js"></script>
+</body>
+</html>
+

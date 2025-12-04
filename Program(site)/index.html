@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAI - National Platform Analytic Industrial with AI</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#hero" class="logo">
+                <img src="NPAI.jpeg" alt="NPAI Logo" />
+                <span class="logo-text">NPAI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#modules">Модули</a></li>
+                <li><a href="pricing.html">Тарифы</a></li>
+                <li><a href="documentation/index.html">Документация</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="auth/login.html" id="auth-nav-link">Войти</a></li>
+                <li><a href="dashboard-offline.html" id="dashboard-offline-link" style="display: none;">Офлайн дашборд</a></li>
+                <li><a href="dashboard-online.html" id="dashboard-online-link" style="display: none;">Онлайн дашборд</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">NPAI</h1>
+            <p class="hero-subtitle">National Platform Analytic Industrial with AI</p>
+            <p class="hero-description">Национальная интеллектуальная платформа для автоматизации, аналитики и мониторинга промышленности</p>
+            <div class="cta-buttons">
+                <a href="#modules" class="btn btn-primary">Изучить модули</a>
+                <a href="documentation/index.html" class="btn btn-secondary">Документация</a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <section id="problems" class="problems">
+        <div class="container">
+            <h2 class="section-title">Проблемы современной промышленности</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Фрагментация данных</h3>
+                    <p class="card-description">Данные разбросаны по разным системам, нет единой картины производства</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Высокий порог входа</h3>
+                    <p class="card-description">Внедрение ИИ требует значительных инвестиций и специалистов</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C9.5 4.5 8 8 8 12C8 16 9.5 19.5 12 22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Экологическая непрозрачность</h3>
+                    <p class="card-description">Сложно отслеживать и контролировать экологическое воздействие</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Ручной контроль качества</h3>
+                    <p class="card-description">Медленные процессы проверки, высокая вероятность ошибок</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.5 2H20V22H6.5A2.5 2.5 0 0 1 4 19.5V4.5A2.5 2.5 0 0 1 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Потеря знаний</h3>
+                    <p class="card-description">Опыт специалистов уходит вместе с ними при смене персонала</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Энергетическая неэффективность</h3>
+                    <p class="card-description">Нет оптимизации потребления энергии и ресурсов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <h2 class="section-title">Наше решение</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Объединяет данные</h3>
+                    <p class="card-description">Единая платформа для всех источников информации</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Автоматизирует процессы</h3>
+                    <p class="card-description">ИИ берет на себя рутинные задачи и анализ</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Делает доступным ИИ</h3>
+                    <p class="card-description">Готовые модули без больших инвестиций</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Обеспечивает прозрачность</h3>
+                    <p class="card-description">Полный контроль за экологией и процессами</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                            <path d="M9 11V7a3 3 0 0 1 6 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Работает офлайн</h3>
+                    <p class="card-description">Функционирует без подключения к интернету</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon icon-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Поддерживает языки</h3>
+                    <p class="card-description">100% локализация на русский и казахский языки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Публичный модуль Eco (бесплатный) -->
+    <section id="public-eco" class="public-eco" style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%); padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title" style="color: #16a34a;">🌱 NPAI Eco - Экологический мониторинг</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Бесплатный доступ к данным о загрязнении воздуха</p>
+            </div>
+            
+            <div id="eco-public-dashboard" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 1.5rem; border-radius: 15px;">
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">Индекс качества воздуха</div>
+                        <div style="font-size: 2.5rem; font-weight: 700;" id="eco-aqi">--</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;" id="eco-aqi-status">Загрузка...</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 1.5rem; border-radius: 15px;">
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">CO₂ уровень</div>
+                        <div style="font-size: 2.5rem; font-weight: 700;" id="eco-co2">--</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">ppm</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 1.5rem; border-radius: 15px;">
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">Температура</div>
+                        <div style="font-size: 2.5rem; font-weight: 700;" id="eco-temp">--</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">°C</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; padding: 1.5rem; background: #f0fdf4; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <p style="color: #065f46; margin-bottom: 1rem;">
+                        <strong>Для доступа к полной информации:</strong> детальная аналитика, исторические данные, прогнозы и отчеты
+                    </p>
+                    <a href="auth/login.html" class="btn btn-primary" style="display: inline-block;">
+                        Войти для полного доступа
+                    </a>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="padding: 1rem; background: #f9fafb; border-radius: 10px;">
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">PM2.5</div>
+                        <div style="font-size: 1.5rem; font-weight: 600;" id="eco-pm25">--</div>
+                        <div style="font-size: 0.75rem; color: var(--text-light);">µg/m³</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f9fafb; border-radius: 10px;">
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">PM10</div>
+                        <div style="font-size: 1.5rem; font-weight: 600;" id="eco-pm10">--</div>
+                        <div style="font-size: 0.75rem; color: var(--text-light);">µg/m³</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f9fafb; border-radius: 10px;">
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">Влажность</div>
+                        <div style="font-size: 1.5rem; font-weight: 600;" id="eco-humidity">--</div>
+                        <div style="font-size: 0.75rem; color: var(--text-light);">%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modules" class="modules">
+        <div class="container">
+            <h2 class="section-title">Модули платформы NPAI</h2>
+            <div class="grid">
+                <a href="module/eco/index.html" class="card module-card">
+                    <div class="card-icon icon-eco">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C12 2 8 6 8 12C8 18 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C12 2 16 6 16 12C16 18 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Eco</h3>
+                    <p class="card-description">Экологический мониторинг и контроль выбросов</p>
+                    <span class="module-badge badge-eco">Экология</span>
+                </a>
+                
+                <a href="module/analytics/index.html" class="card module-card">
+                    <div class="card-icon icon-analytics">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 20V10M12 20V4M6 20V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Analytics</h3>
+                    <p class="card-description">Промышленная аналитика и прогнозирование</p>
+                    <span class="module-badge badge-analytics">Аналитика</span>
+                </a>
+                
+                <a href="module/vision/index.html" class="card module-card">
+                    <div class="card-icon icon-tech">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Vision</h3>
+                    <p class="card-description">Видеоаналитика и контроль качества</p>
+                    <span class="module-badge badge-tech">AI</span>
+                </a>
+                
+                <a href="module/acoustic/index.html" class="card module-card">
+                    <div class="card-icon icon-tech">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2v20M17 7l-5 5-5-5M17 17l-5-5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Acoustic</h3>
+                    <p class="card-description">Акустическая диагностика оборудования</p>
+                    <span class="module-badge badge-tech">AI</span>
+                </a>
+                
+                <a href="module/safety/index.html" class="card module-card">
+                    <div class="card-icon icon-safety">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Safety</h3>
+                    <p class="card-description">Промышленная безопасность и охрана труда</p>
+                    <span class="module-badge badge-safety">Безопасность</span>
+                </a>
+                
+                <a href="module/smart-grid/index.html" class="card module-card">
+                    <div class="card-icon icon-eco">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Smart Grid</h3>
+                    <p class="card-description">Энергоменеджмент и оптимизация</p>
+                    <span class="module-badge badge-eco">Энергия</span>
+                </a>
+                
+                <a href="module/knowledge/index.html" class="card module-card">
+                    <div class="card-icon icon-analytics">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Knowledge</h3>
+                    <p class="card-description">Цифровой технолог и база знаний</p>
+                    <span class="module-badge badge-analytics">LLM</span>
+                </a>
+                
+                <a href="module/thermal/index.html" class="card module-card">
+                    <div class="card-icon icon-tech">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Thermal</h3>
+                    <p class="card-description">Тепловизионный контроль и диагностика</p>
+                    <span class="module-badge badge-tech">Мониторинг</span>
+                </a>
+                
+                <a href="module/marketplace/index.html" class="card module-card">
+                    <div class="card-icon icon-analytics">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Marketplace</h3>
+                    <p class="card-description">Платформа готовых решений и моделей</p>
+                    <span class="module-badge badge-analytics">Маркетплейс</span>
+                </a>
+                
+                <a href="module/offline/index.html" class="card module-card">
+                    <div class="card-icon icon-safety">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">NPAI Offline</h3>
+                    <p class="card-description">Автономная работа без интернета</p>
+                    <span class="module-badge badge-safety">Безопасность</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NPAI</h3>
+                <p>Национальная интеллектуальная платформа для автоматизации и мониторинга промышленности</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Платформа</h3>
+                <a href="#modules">Модули</a>
+                <a href="#solutions">Решения</a>
+                <a href="#about">О проекте</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ресурсы</h3>
+                <a href="documentation/index.html">Документация</a>
+                <a href="#">API</a>
+                <a href="#">Поддержка</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: info@npai.kz</p>
+                <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+                <p>Адрес: Казахстан, Алматы</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 NPAI. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/auth-utils.js"></script>
+    <script src="assets/js/module-access.js"></script>
+    <script src="assets/js/eco-public.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main-page.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

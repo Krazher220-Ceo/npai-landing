@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тарифы и цены | NPAI</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/module.css">
+    <style>
+        .pricing-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+        }
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .module-pricing-section {
+            margin-bottom: 5rem;
+        }
+        .module-pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .module-pricing-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+        .pricing-card.recommended {
+            border-color: var(--secondary-color);
+            border-width: 3px;
+        }
+        .pricing-card.recommended::before {
+            content: 'РЕКОМЕНДУЕТСЯ';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .pricing-card.free {
+            border-color: #10b981;
+        }
+        .pricing-plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            color: var(--primary-color);
+        }
+        .pricing-price .currency {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        .pricing-price .period {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .pricing-features li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        .pricing-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .free-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html" class="logo">
+                <img src="NPAI.jpeg" alt="NPAI Logo" />
+                <span class="logo-text">NPAI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html#modules">Модули</a></li>
+                <li><a href="pricing.html">Тарифы</a></li>
+                <li><a href="documentation/index.html">Документация</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="auth/login.html" id="auth-nav-link">Войти</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pricing-hero">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Тарифы и цены</h1>
+            <p style="font-size: 1.5rem; opacity: 0.95;">Выберите подходящий план для вашего бизнеса</p>
+        </div>
+    </div>
+
+    <div class="pricing-container">
+        <div id="pricing-content">
+            <!-- Модули будут загружены через JavaScript -->
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 1.2rem; color: var(--text-light);">Загрузка тарифов...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NPAI</h3>
+                <p>Национальная интеллектуальная платформа для автоматизации и мониторинга промышленности</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Платформа</h3>
+                <a href="index.html#modules">Модули</a>
+                <a href="pricing.html">Тарифы</a>
+                <a href="documentation/index.html">О проекте</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ресурсы</h3>
+                <a href="documentation/index.html">Документация</a>
+                <a href="#">API</a>
+                <a href="#">Поддержка</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: info@npai.kz</p>
+                <p>Телефон: +7 (700) 123-45-67</p>
+                <p>Адрес: Казахстан, Алматы</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 NPAI. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/auth-utils.js"></script>
+    <script src="assets/js/module-access.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/pricing.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

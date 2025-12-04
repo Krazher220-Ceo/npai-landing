@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.log
+~$*.docx
+~$*.doc
+
+# Node modules (if any)
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# Build files
+dist/
+build/
