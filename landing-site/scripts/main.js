@@ -408,9 +408,9 @@ function showModuleDetails(moduleId) {
             <button class="btn btn-primary" onclick="closeModal()">
                 <i class="fas fa-check"></i> Понятно
             </button>
-            <button class="btn btn-secondary" onclick="closeModal()">
+            <a href="mailto:Krazher220@icloud.com" class="btn btn-secondary">
                 <i class="fas fa-envelope"></i> Связаться с нами
-            </button>
+            </a>
         </div>
     `;
     
