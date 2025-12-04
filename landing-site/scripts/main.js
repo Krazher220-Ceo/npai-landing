@@ -545,6 +545,40 @@ function initAnimations() {
 }
 
 // ===========================
+// Side Menu Functions
+// ===========================
+
+function openMenu() {
+    const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (sideMenu && menuOverlay) {
+        sideMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMenu() {
+    const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (sideMenu && menuOverlay) {
+        sideMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close menu on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeMenu();
+        closeModal();
+    }
+});
+
+// ===========================
 // Global Functions
 // ===========================
 
@@ -552,5 +586,7 @@ function initAnimations() {
 window.showModuleDetails = showModuleDetails;
 window.closeModal = closeModal;
 window.toggleDocView = toggleDocView;
+window.openMenu = openMenu;
+window.closeMenu = closeMenu;
 
 

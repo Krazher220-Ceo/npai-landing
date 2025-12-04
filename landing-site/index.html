@@ -9,18 +9,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+    
+    <!-- Side Menu for Mobile -->
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <div class="side-menu-brand">
                 <i class="fas fa-brain"></i>
                 <span>NPAI</span>
             </div>
+            <button class="side-menu-close" onclick="closeMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="side-menu-list">
+            <li><a href="#home" onclick="closeMenu()"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="#about" onclick="closeMenu()"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a href="#modules" onclick="closeMenu()"><i class="fas fa-th-large"></i> Модули</a></li>
+            <li><a href="gallery.html" target="_blank"><i class="fas fa-images"></i> Галерея</a></li>
+            <li><a href="#features" onclick="closeMenu()"><i class="fas fa-star"></i> Преимущества</a></li>
+            <li><a href="#pricing" onclick="closeMenu()"><i class="fas fa-tags"></i> Тарифы</a></li>
+            <li><a href="#documentation" onclick="closeMenu()"><i class="fas fa-book"></i> Документация</a></li>
+            <li><a href="#license" onclick="closeMenu()"><i class="fas fa-shield-alt"></i> Лицензия</a></li>
+            <li><a href="#contact" onclick="closeMenu()"><i class="fas fa-envelope"></i> Контакты</a></li>
+        </ul>
+        <div class="side-menu-footer">
+            <a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank" class="btn btn-outline btn-sm">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>NPAI</span>
+            </a>
             <ul class="nav-menu">
                 <li><a href="#home">Главная</a></li>
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#modules">Модули</a></li>
-                <li><a href="gallery.html" target="_blank" style="color: #f59e0b;">
+                <li><a href="gallery.html" target="_blank" class="gallery-link">
                     <i class="fas fa-images"></i> Галерея
                 </a></li>
                 <li><a href="#features">Преимущества</a></li>
@@ -29,7 +61,7 @@
                 <li><a href="#license">Лицензия</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle">
+            <button class="nav-toggle" id="navToggle" onclick="openMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -45,23 +77,23 @@
                 </h1>
                 <h2 class="hero-subtitle">National Platform Analytic Industrial with AI</h2>
                 <p class="hero-description">
-                    Маркетплейс кодов для IoT устройств, AI-моделей и решений для анализа данных подключенных систем
+                    Маркетплейс готовых решений для IoT устройств и AI-моделей. Вместо месяцев разработки — решение за минуты.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#modules" class="btn btn-primary">
+                    <a href="#about" class="btn btn-primary">
                         <i class="fas fa-rocket"></i> Узнать больше
                     </a>
-                    <a href="gallery.html" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-                        <i class="fas fa-images"></i> Интерактивная галерея
+                    <a href="gallery.html" target="_blank" class="btn btn-gallery">
+                        <i class="fas fa-images"></i> Галерея
                     </a>
-                    <a href="#pricing" class="btn btn-secondary">
-                        <i class="fas fa-tags"></i> Тарифы
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Связаться
                     </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">10+</div>
-                        <div class="stat-label">Модулей ИИ</div>
+                        <div class="stat-label">Модулей</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">30-50%</div>
@@ -81,16 +113,16 @@
         <div class="container">
             <div class="section-header">
                 <h2>О нас</h2>
-                <p>NPAI — это маркетплейс готовых решений для IoT и AI</p>
+                <p>NPAI — маркетплейс готовых решений для IoT и AI</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <h3>Что мы делаем</h3>
                     <p>Мы помогаем компаниям подключать умные устройства быстро и дёшево, продавая им готовый код и AI-модели. Вместо месяцев разработки вы получаете решение за минуты.</p>
-                    <p>NPAI — это онлайн-магазин готовых программ для умных устройств на заводах и в компаниях. Как App Store, только для промышленных программ и умных устройств.</p>
+                    <p>NPAI — это онлайн-магазин готовых программ для умных устройств. Как App Store, только для промышленных программ.</p>
                     
                     <h3>Наша миссия</h3>
-                    <p>Сделать современные технологии доступными для всех компаний, не только для крупных корпораций. Мы даём разработчикам возможность монетизировать свои решения и создаём экосистему, где все выигрывают.</p>
+                    <p>Сделать современные технологии доступными для всех компаний, не только для крупных корпораций.</p>
                     
                     <h3>Почему мы</h3>
                     <ul class="about-list">
@@ -98,25 +130,25 @@
                         <li><i class="fas fa-check-circle"></i> Интеграция кодов и AI в одной платформе</li>
                         <li><i class="fas fa-check-circle"></i> Два типа дашбордов (офлайн/онлайн)</li>
                         <li><i class="fas fa-check-circle"></i> Защита интеллектуальной собственности</li>
-                        <li><i class="fas fa-check-circle"></i> Локализация для Казахстана (русский и казахский языки)</li>
+                        <li><i class="fas fa-check-circle"></i> Локализация для Казахстана</li>
                         <li><i class="fas fa-check-circle"></i> Локальное хранение данных</li>
                     </ul>
                 </div>
                 <div class="about-images">
                     <div class="about-image-card">
-                        <img src="TAM,SAM,SOM.png" alt="TAM SAM SOM - Объем рынка" class="about-img">
+                        <img src="market-size.png" alt="TAM SAM SOM - Объем рынка" class="about-img" loading="lazy">
                         <p class="image-caption">Объем рынка: TAM, SAM, SOM</p>
                     </div>
                     <div class="about-image-card">
-                        <img src="Наглядный рисенок с совмещением разных структур-заводов и тд- как в галереии.png" alt="Структура платформы" class="about-img">
-                        <p class="image-caption">Структура платформы для разных типов предприятий</p>
+                        <img src="platform-structure.png" alt="Структура платформы" class="about-img" loading="lazy">
+                        <p class="image-caption">Структура платформы</p>
                     </div>
                     <div class="about-image-card">
-                        <img src="Дейсвия от лица компании.png" alt="Действия от лица компании" class="about-img">
+                        <img src="company-actions.png" alt="Действия компании" class="about-img" loading="lazy">
                         <p class="image-caption">Действия от лица компании</p>
                     </div>
                     <div class="about-image-card">
-                        <img src="координатная плоскасть.png" alt="Конкурентный анализ" class="about-img">
+                        <img src="competitive-analysis.png" alt="Конкурентный анализ" class="about-img" loading="lazy">
                         <p class="image-caption">Конкурентный анализ</p>
                     </div>
                 </div>
@@ -135,23 +167,21 @@
                 <div class="ps-card problem">
                     <h3><i class="fas fa-exclamation-triangle"></i> Проблемы</h3>
                     <ul>
-                        <li><i class="fas fa-times-circle"></i> Нет готовых решений для IoT устройств</li>
-                        <li><i class="fas fa-times-circle"></i> Сложность анализа данных от подключенных систем</li>
-                        <li><i class="fas fa-times-circle"></i> Высокий порог входа для AI-анализа данных</li>
-                        <li><i class="fas fa-times-circle"></i> Нет единого места для покупки кодов и AI-моделей</li>
-                        <li><i class="fas fa-times-circle"></i> Разработчикам сложно монетизировать решения</li>
-                        <li><i class="fas fa-times-circle"></i> Нет примеров готовых AI-моделей для обучения</li>
+                        <li><i class="fas fa-times-circle"></i> Нет готовых решений для IoT</li>
+                        <li><i class="fas fa-times-circle"></i> Сложность анализа данных</li>
+                        <li><i class="fas fa-times-circle"></i> Высокий порог входа для AI</li>
+                        <li><i class="fas fa-times-circle"></i> Нет единого места для покупки</li>
+                        <li><i class="fas fa-times-circle"></i> Сложно монетизировать решения</li>
                     </ul>
                 </div>
                 <div class="ps-card solution">
                     <h3><i class="fas fa-check-circle"></i> Решение NPAI</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> Маркетплейс готовых кодов для IoT устройств</li>
-                        <li><i class="fas fa-check"></i> AI-анализ данных от любых подключенных систем</li>
-                        <li><i class="fas fa-check"></i> Маркетплейс AI-моделей с возможностью продажи</li>
-                        <li><i class="fas fa-check"></i> Готовые модели как примеры для обучения</li>
-                        <li><i class="fas fa-check"></i> Удобная монетизация для разработчиков</li>
-                        <li><i class="fas fa-check"></i> Быстрый доступ к решениям без разработки с нуля</li>
+                        <li><i class="fas fa-check"></i> Маркетплейс готовых кодов</li>
+                        <li><i class="fas fa-check"></i> AI-анализ любых данных</li>
+                        <li><i class="fas fa-check"></i> Маркетплейс AI-моделей</li>
+                        <li><i class="fas fa-check"></i> Готовые примеры для обучения</li>
+                        <li><i class="fas fa-check"></i> Монетизация для разработчиков</li>
                     </ul>
                 </div>
             </div>
@@ -163,7 +193,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Модули NPAI</h2>
-                <p>10 интеллектуальных модулей для работы с IoT устройствами, анализа данных и AI-решений</p>
+                <p>10 интеллектуальных модулей для IoT и AI-решений</p>
             </div>
             <div class="modules-grid">
                 <!-- Module 1: NPAI Eco -->
@@ -173,12 +203,11 @@
                     </div>
                     <h3>NPAI Eco</h3>
                     <p class="module-subtitle">Экологический мониторинг</p>
-                    <p>Комплексная система мониторинга экологической ситуации в реальном времени</p>
+                    <p>Мониторинг экологической ситуации в реальном времени</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-wind"></i> Визуализация загрязнения воздуха</li>
+                        <li><i class="fas fa-wind"></i> Загрязнение воздуха</li>
                         <li><i class="fas fa-chart-line"></i> Мониторинг выбросов</li>
-                        <li><i class="fas fa-map"></i> Публичная карта для жителей</li>
-                        <li><i class="fas fa-file-alt"></i> Автоматическая отчетность</li>
+                        <li><i class="fas fa-map"></i> Публичная карта</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('eco')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -192,12 +221,11 @@
                     </div>
                     <h3>NPAI Analytics</h3>
                     <p class="module-subtitle">Промышленная аналитика</p>
-                    <p>Централизованная система сбора, обработки и визуализации производственных данных</p>
+                    <p>Сбор, обработка и визуализация данных</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-database"></i> Сбор данных из всех систем</li>
-                        <li><i class="fas fa-tachometer-alt"></i> Производственные KPI</li>
-                        <li><i class="fas fa-balance-scale"></i> Сравнительная аналитика</li>
-                        <li><i class="fas fa-clipboard-list"></i> Готовые отчеты</li>
+                        <li><i class="fas fa-database"></i> Сбор данных</li>
+                        <li><i class="fas fa-tachometer-alt"></i> KPI</li>
+                        <li><i class="fas fa-clipboard-list"></i> Отчеты</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('analytics')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -211,12 +239,11 @@
                     </div>
                     <h3>NPAI Vision</h3>
                     <p class="module-subtitle">AI-видеоаналитика</p>
-                    <p>Интеллектуальный анализ видеопотоков для контроля качества и безопасности</p>
+                    <p>Анализ видеопотоков для контроля качества</p>
                     <ul class="module-features">
                         <li><i class="fas fa-search"></i> Обнаружение дефектов</li>
-                        <li><i class="fas fa-hard-hat"></i> Контроль безопасности</li>
-                        <li><i class="fas fa-cogs"></i> Мониторинг оборудования</li>
-                        <li><i class="fas fa-fire"></i> Предупреждение аварий</li>
+                        <li><i class="fas fa-hard-hat"></i> Безопасность</li>
+                        <li><i class="fas fa-cogs"></i> Мониторинг</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('vision')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -230,12 +257,11 @@
                     </div>
                     <h3>NPAI Acoustic</h3>
                     <p class="module-subtitle">Акустическая диагностика</p>
-                    <p>Предиктивное обслуживание на основе анализа звука и вибраций оборудования</p>
+                    <p>Предиктивное обслуживание</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-tools"></i> Предсказание поломок за 2-3 недели</li>
-                        <li><i class="fas fa-exclamation-circle"></i> Обнаружение утечек газа</li>
-                        <li><i class="fas fa-wave-square"></i> Анализ режимов работы</li>
-                        <li><i class="fas fa-bell"></i> Автоматические алерты</li>
+                        <li><i class="fas fa-tools"></i> Предсказание поломок</li>
+                        <li><i class="fas fa-exclamation-circle"></i> Обнаружение утечек</li>
+                        <li><i class="fas fa-bell"></i> Алерты</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('acoustic')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -249,12 +275,11 @@
                     </div>
                     <h3>NPAI Safety</h3>
                     <p class="module-subtitle">Промышленная безопасность</p>
-                    <p>Расширенная система контроля безопасности с использованием компьютерного зрения</p>
+                    <p>Контроль безопасности с компьютерным зрением</p>
                     <ul class="module-features">
                         <li><i class="fas fa-user-shield"></i> Контроль СИЗ</li>
-                        <li><i class="fas fa-exclamation-triangle"></i> Детекция опасных ситуаций</li>
-                        <li><i class="fas fa-mobile-alt"></i> Умные устройства безопасности</li>
-                        <li><i class="fas fa-file-contract"></i> Автоматическая отчетность</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Опасные ситуации</li>
+                        <li><i class="fas fa-file-contract"></i> Отчетность</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('safety')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -268,12 +293,11 @@
                     </div>
                     <h3>NPAI Smart Grid</h3>
                     <p class="module-subtitle">Энергоменеджмент</p>
-                    <p>Оптимизация энергопотребления и управления ресурсами предприятия</p>
+                    <p>Оптимизация энергопотребления</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-search-minus"></i> Выявление энергетических потерь</li>
-                        <li><i class="fas fa-chart-area"></i> Прогнозирование нагрузок</li>
-                        <li><i class="fas fa-seedling"></i> Расчет углеродного следа</li>
-                        <li><i class="fas fa-percentage"></i> Экономия 15-30% на энергии</li>
+                        <li><i class="fas fa-search-minus"></i> Потери энергии</li>
+                        <li><i class="fas fa-chart-area"></i> Прогнозирование</li>
+                        <li><i class="fas fa-percentage"></i> Экономия 15-30%</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('smartgrid')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -287,12 +311,11 @@
                     </div>
                     <h3>NPAI Knowledge</h3>
                     <p class="module-subtitle">Цифровой Технолог (LLM)</p>
-                    <p>Интеллектуальная система управления знаниями на основе больших языковых моделей</p>
+                    <p>Управление знаниями на основе LLM</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-comments"></i> Чат-бот для инженеров</li>
+                        <li><i class="fas fa-comments"></i> Чат-бот</li>
                         <li><i class="fas fa-file-invoice"></i> Генерация отчетов</li>
-                        <li><i class="fas fa-graduation-cap"></i> Обучение сотрудников</li>
-                        <li><i class="fas fa-book"></i> База знаний предприятия</li>
+                        <li><i class="fas fa-book"></i> База знаний</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('knowledge')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -306,12 +329,11 @@
                     </div>
                     <h3>NPAI Thermal</h3>
                     <p class="module-subtitle">Тепловизионный контроль</p>
-                    <p>Мониторинг на основе анализа тепловых изображений для предотвращения аварий</p>
+                    <p>Анализ тепловых изображений</p>
                     <ul class="module-features">
                         <li><i class="fas fa-fire-extinguisher"></i> Пожарная безопасность</li>
-                        <li><i class="fas fa-tint"></i> Обнаружение утечек тепла</li>
-                        <li><i class="fas fa-temperature-high"></i> Контроль технологических процессов</li>
-                        <li><i class="fas fa-helicopter"></i> Интеграция с дронами</li>
+                        <li><i class="fas fa-tint"></i> Утечки тепла</li>
+                        <li><i class="fas fa-helicopter"></i> Дроны</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('thermal')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -324,15 +346,12 @@
                         <i class="fas fa-store"></i>
                     </div>
                     <h3>NPAI Marketplace</h3>
-                    <p class="module-subtitle">Маркетплейс кодов и AI-моделей</p>
-                    <p>Платформа для продажи кодов для IoT устройств, AI-моделей и решений для анализа данных подключенных систем</p>
+                    <p class="module-subtitle">Маркетплейс решений</p>
+                    <p>Платформа для продажи кодов и AI-моделей</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-code"></i> Маркетплейс кодов для IoT устройств</li>
-                        <li><i class="fas fa-brain"></i> Продажа и покупка AI-моделей</li>
-                        <li><i class="fas fa-database"></i> AI-анализ данных подключенных систем</li>
-                        <li><i class="fas fa-graduation-cap"></i> Готовые модели как примеры</li>
-                        <li><i class="fas fa-dollar-sign"></i> Монетизация для разработчиков</li>
-                        <li><i class="fas fa-plug"></i> Автоматическая интеграция</li>
+                        <li><i class="fas fa-code"></i> IoT коды</li>
+                        <li><i class="fas fa-brain"></i> AI-модели</li>
+                        <li><i class="fas fa-dollar-sign"></i> Монетизация</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('marketplace')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -346,12 +365,11 @@
                     </div>
                     <h3>NPAI Offline</h3>
                     <p class="module-subtitle">Офлайн-режим</p>
-                    <p>Система работы без интернета с безопасной синхронизацией данных</p>
+                    <p>Работа без интернета</p>
                     <ul class="module-features">
-                        <li><i class="fas fa-wifi-slash"></i> Полная офлайн-работа</li>
-                        <li><i class="fas fa-sync-alt"></i> Безопасная синхронизация</li>
-                        <li><i class="fas fa-user-secret"></i> Конфиденциальность данных</li>
-                        <li><i class="fas fa-laptop"></i> Удаленная работа</li>
+                        <li><i class="fas fa-wifi-slash"></i> Офлайн-работа</li>
+                        <li><i class="fas fa-sync-alt"></i> Синхронизация</li>
+                        <li><i class="fas fa-user-secret"></i> Безопасность</li>
                     </ul>
                     <button class="btn-details" onclick="showModuleDetails('offline')">
                         Подробнее <i class="fas fa-arrow-right"></i>
@@ -366,7 +384,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Уникальные преимущества</h2>
-                <p>Почему NPAI — лучший выбор для вашего предприятия</p>
+                <p>Почему NPAI — лучший выбор</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -374,42 +392,42 @@
                         <i class="fas fa-language"></i>
                     </div>
                     <h3>Локализация</h3>
-                    <p>Полная поддержка русского и казахского языков. Интеграция с локальными системами и соответствие местным стандартам.</p>
+                    <p>Поддержка русского и казахского языков. Соответствие местным стандартам.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Простота внедрения</h3>
-                    <p>Готовые модули "из коробки" без программирования. Быстрое подключение за 5-30 минут.</p>
+                    <h3>Простота</h3>
+                    <p>Готовые модули без программирования. Подключение за 5-30 минут.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-hand-holding-usd"></i>
                     </div>
                     <h3>Доступность</h3>
-                    <p>Бесплатный тариф для малых предприятий. Гибкая монетизация и масштабируемость от одного цеха до национальной сети.</p>
+                    <p>Бесплатный тариф для малых предприятий. Гибкая монетизация.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Безопасность</h3>
-                    <p>Офлайн-работа, локальное хранение данных, шифрование на всех уровнях. Технологический суверенитет.</p>
+                    <p>Офлайн-работа, локальное хранение данных, шифрование.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-puzzle-piece"></i>
                     </div>
                     <h3>Комплексность</h3>
-                    <p>Единая платформа со всеми инструментами. Интеграция модулей и централизованная аналитика.</p>
+                    <p>Единая платформа со всеми инструментами.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3>Экосистема</h3>
-                    <p>Marketplace для расширения функциональности. API, SDK и сообщество разработчиков.</p>
+                    <p>Marketplace, API, SDK и сообщество разработчиков.</p>
                 </div>
             </div>
         </div>
@@ -420,7 +438,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Тарифные планы</h2>
-                <p>Выберите подходящий план для вашего бизнеса</p>
+                <p>Выберите подходящий план</p>
             </div>
             <div class="pricing-grid">
                 <!-- Free Plan -->
@@ -431,16 +449,15 @@
                         <span class="price">$0</span>
                         <span class="period">/месяц</span>
                     </div>
-                    <p class="pricing-description">Для малых предприятий и стартапов</p>
+                    <p class="pricing-description">Для стартапов</p>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> 1 предприятие</li>
                         <li><i class="fas fa-check"></i> До 10 датчиков</li>
-                        <li><i class="fas fa-check"></i> 50 AI-запросов/месяц</li>
+                        <li><i class="fas fa-check"></i> 50 AI-запросов</li>
                         <li><i class="fas fa-check"></i> Базовые дашборды</li>
-                        <li><i class="fas fa-check"></i> Публичная карта экологии</li>
-                        <li><i class="fas fa-times"></i> Приоритетная поддержка</li>
+                        <li><i class="fas fa-times"></i> Поддержка</li>
                     </ul>
-                    <button class="btn btn-outline">Начать бесплатно</button>
+                    <button class="btn btn-outline">Начать</button>
                 </div>
 
                 <!-- PRO Plan -->
@@ -454,13 +471,12 @@
                     <p class="pricing-description">Для средних предприятий</p>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> До 3 предприятий</li>
-                        <li><i class="fas fa-check"></i> Неограниченные датчики</li>
-                        <li><i class="fas fa-check"></i> 1000 AI-запросов/месяц</li>
-                        <li><i class="fas fa-check"></i> Все модули аналитики</li>
-                        <li><i class="fas fa-check"></i> Видеоаналитика (до 10 камер)</li>
-                        <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+                        <li><i class="fas fa-check"></i> Безлимит датчиков</li>
+                        <li><i class="fas fa-check"></i> 1000 AI-запросов</li>
+                        <li><i class="fas fa-check"></i> Все модули</li>
+                        <li><i class="fas fa-check"></i> Поддержка</li>
                     </ul>
-                    <button class="btn btn-primary">Выбрать PRO</button>
+                    <button class="btn btn-primary">Выбрать</button>
                 </div>
 
                 <!-- BUSINESS Plan -->
@@ -473,14 +489,13 @@
                     </div>
                     <p class="pricing-description">Для крупных предприятий</p>
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Неограниченные предприятия</li>
-                        <li><i class="fas fa-check"></i> Неограниченные AI-запросы</li>
-                        <li><i class="fas fa-check"></i> Все модули NPAI</li>
-                        <li><i class="fas fa-check"></i> Видеоаналитика (безлимит)</li>
+                        <li><i class="fas fa-check"></i> Безлимит</li>
+                        <li><i class="fas fa-check"></i> Безлимит AI</li>
+                        <li><i class="fas fa-check"></i> Все модули</li>
                         <li><i class="fas fa-check"></i> API доступ</li>
                         <li><i class="fas fa-check"></i> 24/7 поддержка</li>
                     </ul>
-                    <button class="btn btn-outline">Выбрать BUSINESS</button>
+                    <button class="btn btn-outline">Выбрать</button>
                 </div>
 
                 <!-- ENTERPRISE Plan -->
@@ -490,17 +505,16 @@
                     <div class="pricing-price">
                         <span class="price">Индивидуально</span>
                     </div>
-                    <p class="pricing-description">Для крупнейших корпораций</p>
+                    <p class="pricing-description">Для корпораций</p>
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Все возможности BUSINESS</li>
+                        <li><i class="fas fa-check"></i> Все BUSINESS</li>
                         <li><i class="fas fa-check"></i> Кастомные модули</li>
-                        <li><i class="fas fa-check"></i> Собственные модели ИИ</li>
-                        <li><i class="fas fa-check"></i> On-premise развертывание</li>
-                        <li><i class="fas fa-check"></i> SLA гарантии</li>
+                        <li><i class="fas fa-check"></i> On-premise</li>
+                        <li><i class="fas fa-check"></i> SLA</li>
                         <li><i class="fas fa-check"></i> Персональная команда</li>
                     </ul>
                     <a href="mailto:Krazher220@icloud.com" class="btn btn-outline">
-                        <i class="fas fa-envelope"></i> Связаться с нами
+                        <i class="fas fa-envelope"></i> Написать
                     </a>
                 </div>
             </div>
@@ -511,26 +525,20 @@
     <section id="documentation" class="documentation">
         <div class="container">
             <div class="section-header">
-                <h2>Полная документация NPAI</h2>
-                <p>Подробное описание платформы, модулей и технологий</p>
+                <h2>Документация</h2>
+                <p>Подробное описание платформы</p>
             </div>
             <div class="doc-controls">
                 <button class="btn btn-secondary" onclick="toggleDocView()">
-                    <i class="fas fa-eye"></i> Показать/Скрыть документацию
+                    <i class="fas fa-eye"></i> Показать документацию
                 </button>
-                <a href="../ПОЛНОЕ_ОПИСАНИЕ_ПРОЕКТА.md" download class="btn btn-outline">
-                    <i class="fas fa-download"></i> Скачать полное описание (MD)
-                </a>
-                <a href="../ПОЛНОЕ_ОПИСАНИЕ_ПРОЕКТА.docx" download class="btn btn-outline">
-                    <i class="fas fa-file-word"></i> Скачать полное описание (DOCX)
-                </a>
-                <a href="../ПРОСТОЕ_ОПИСАНИЕ_ПРОЕКТА.md" download class="btn btn-outline">
-                    <i class="fas fa-book"></i> Скачать простое описание
+                <a href="NPAI_Project_Description.md" download class="btn btn-outline">
+                    <i class="fas fa-download"></i> Скачать MD
                 </a>
             </div>
             <div id="documentationContent" class="doc-content" style="display: none;">
                 <div class="doc-loader">
-                    <i class="fas fa-spinner fa-spin"></i> Загрузка документации...
+                    <i class="fas fa-spinner fa-spin"></i> Загрузка...
                 </div>
             </div>
         </div>
@@ -540,8 +548,8 @@
     <section id="license" class="license-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-shield-alt"></i> Защита интеллектуальной собственности</h2>
-                <p>NPAI защищено авторским правом и законами об интеллектуальной собственности</p>
+                <h2><i class="fas fa-shield-alt"></i> Защита ИС</h2>
+                <p>NPAI защищено авторским правом</p>
             </div>
             <div class="license-content">
                 <div class="license-card">
@@ -549,58 +557,101 @@
                         <i class="fas fa-copyright"></i>
                     </div>
                     <h3>Авторские права</h3>
-                    <p>Все материалы NPAI, включая концепции, идеи, бизнес-модели, алгоритмы, дизайн и код, защищены авторским правом © 2024 NPAI. Все права защищены.</p>
+                    <p>Все материалы NPAI защищены авторским правом © 2024 NPAI.</p>
                 </div>
                 <div class="license-card">
                     <div class="license-icon">
                         <i class="fas fa-ban"></i>
                     </div>
-                    <h3>Запрещено без разрешения</h3>
+                    <h3>Запрещено</h3>
                     <ul>
-                        <li>Копирование, воспроизведение или распространение материалов</li>
-                        <li>Создание производных работ на основе NPAI</li>
-                        <li>Использование концепций и идей в коммерческих целях</li>
-                        <li>Использование названия, логотипов или торговых марок</li>
+                        <li>Копирование материалов</li>
+                        <li>Создание производных работ</li>
+                        <li>Коммерческое использование</li>
                     </ul>
                 </div>
                 <div class="license-card">
                     <div class="license-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Коммерческое использование</h3>
-                    <p>Любое коммерческое использование материалов NPAI требует письменного разрешения от владельца авторских прав.</p>
-                    <p><strong>Для получения лицензии обращайтесь:</strong></p>
+                    <h3>Лицензия</h3>
+                    <p>Для коммерческого использования:</p>
                     <p>
-                        <i class="fas fa-envelope"></i> <a href="mailto:Krazher220@icloud.com">Krazher220@icloud.com</a><br>
-                        <i class="fas fa-phone"></i> <a href="tel:+77056697677">+7 705 669 76 77</a>
+                        <a href="mailto:Krazher220@icloud.com"><i class="fas fa-envelope"></i> Krazher220@icloud.com</a>
                     </p>
                 </div>
                 <div class="license-card warning">
                     <div class="license-icon">
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
-                    <h3>Ответственность за нарушение</h3>
-                    <p>Нарушение авторских прав влечет гражданскую и уголовную ответственность в соответствии с законодательством Республики Казахстан и международными соглашениями.</p>
-                    <a href="LICENSE" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">
-                        <i class="fas fa-file-contract"></i> Полный текст лицензионного соглашения
+                    <h3>Ответственность</h3>
+                    <p>Нарушение авторских прав влечет ответственность по законам РК.</p>
+                    <a href="LICENSE" target="_blank" class="btn btn-outline btn-sm">
+                        <i class="fas fa-file-contract"></i> Полный текст
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
-                <h2>Готовы начать работу с IoT и AI?</h2>
-            <p>Присоединяйтесь к NPAI и получите доступ к маркетплейсу кодов, AI-моделей и решений для ваших подключенных систем</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary btn-lg">
-                    <i class="fas fa-rocket"></i> Начать бесплатно
-                </button>
-                <a href="mailto:Krazher220@icloud.com" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-envelope"></i> Связаться с нами
-                </a>
+            <div class="section-header">
+                <h2><i class="fas fa-envelope"></i> Контакты</h2>
+                <p>Свяжитесь с нами</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:Krazher220@icloud.com">Krazher220@icloud.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Телефон</h4>
+                            <a href="tel:+77056697677">+7 705 669 76 77</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Локация</h4>
+                            <p>г. Костанай, Казахстан</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank">Krazher220-Ceo/npai-landing</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <h3>Готовы начать?</h3>
+                    <p>Присоединяйтесь к NPAI и получите доступ к маркетплейсу IoT и AI решений</p>
+                    <div class="contact-buttons">
+                        <a href="mailto:Krazher220@icloud.com" class="btn btn-primary btn-lg">
+                            <i class="fas fa-envelope"></i> Написать
+                        </a>
+                        <a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank" class="btn btn-outline btn-lg">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -611,45 +662,44 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4><i class="fas fa-brain"></i> NPAI</h4>
-                    <p>Маркетплейс кодов для IoT устройств, AI-моделей и решений для анализа данных подключенных систем</p>
+                    <p>Маркетплейс IoT и AI решений для промышленности</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:Krazher220@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+77056697677" title="Телефон"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Платформа</h4>
                     <ul>
+                        <li><a href="#about">О нас</a></li>
                         <li><a href="#modules">Модули</a></li>
                         <li><a href="#features">Преимущества</a></li>
                         <li><a href="#pricing">Тарифы</a></li>
-                        <li><a href="#documentation">Документация</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Ресурсы</h4>
                     <ul>
-                        <li><a href="#">API документация</a></li>
-                        <li><a href="#">SDK</a></li>
-                        <li><a href="#">Marketplace</a></li>
-                        <li><a href="#">Поддержка</a></li>
+                        <li><a href="#documentation">Документация</a></li>
+                        <li><a href="gallery.html" target="_blank">Галерея</a></li>
+                        <li><a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank">GitHub</a></li>
+                        <li><a href="#license">Лицензия</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Контакты</h4>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:Krazher220@icloud.com" style="color: inherit; text-decoration: none;">Krazher220@icloud.com</a></li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+77056697677" style="color: inherit; text-decoration: none;">+7 705 669 76 77</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> г.Костанай - Костанайская область</li>
+                        <li><a href="mailto:Krazher220@icloud.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="tel:+77056697677"><i class="fas fa-phone"></i> Телефон</a></li>
+                        <li><a href="#contact"><i class="fas fa-map-marker-alt"></i> г. Костанай</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 NPAI. Все права защищены. | 
-                   <a href="LICENSE" target="_blank" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline;">Лицензионное соглашение</a> | 
-                   <a href="#license" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline;">О защите интеллектуальной собственности</a>
+                   <a href="LICENSE" target="_blank">Лицензия</a> | 
+                   <a href="https://github.com/Krazher220-Ceo/npai-landing" target="_blank">GitHub</a>
                 </p>
             </div>
         </div>
@@ -666,4 +716,3 @@
     <script src="scripts/main.js"></script>
 </body>
 </html>
-
