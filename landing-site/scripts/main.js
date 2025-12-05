@@ -16,23 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===========================
 
 function initNavigation() {
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-    
-    // Close menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-        });
-    });
-    
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
@@ -42,6 +25,35 @@ function initNavigation() {
             navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
         }
     });
+    
+    // Закрывать меню при изменении размера окна (если экран стал большим)
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth >= 769) {
+                closeMenu();
+            }
+        }, 250);
+    });
+    
+    // Touch события для Android
+    const navToggle = document.getElementById('navToggle');
+    if (navToggle) {
+        navToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            openMenu(e);
+        }, { passive: false });
+    }
+    
+    // Закрывать меню при клике на overlay
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (menuOverlay) {
+        menuOverlay.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            closeMenu(e);
+        }, { passive: false });
+    }
 }
 
 // ===========================
@@ -548,25 +560,66 @@ function initAnimations() {
 // Side Menu Functions
 // ===========================
 
-function openMenu() {
+function openMenu(e) {
+    // Предотвращаем всплытие события
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    // Проверяем, что мы на мобильном устройстве
+    if (window.innerWidth >= 769) {
+        return; // Не открываем меню на десктопе
+    }
+    
     const sideMenu = document.getElementById('sideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     
     if (sideMenu && menuOverlay) {
+        // Закрываем модальное окно, если открыто
+        if (typeof closeModal === 'function') {
+            const modal = document.getElementById('moduleModal');
+            if (modal && modal.style.display === 'block') {
+                closeModal();
+            }
+        }
+        
         sideMenu.classList.add('active');
         menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        
+        // Предотвращаем скролл на мобильных устройствах
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.setAttribute('data-scroll', scrollY);
     }
 }
 
-function closeMenu() {
+function closeMenu(e) {
+    // Предотвращаем всплытие события
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
     const sideMenu = document.getElementById('sideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     
     if (sideMenu && menuOverlay) {
         sideMenu.classList.remove('active');
         menuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        
+        // Восстанавливаем скролл
+        const scrollY = document.body.getAttribute('data-scroll');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.removeAttribute('data-scroll');
+        
+        if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY));
+        }
     }
 }
 
@@ -574,8 +627,17 @@ function closeMenu() {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeMenu();
-        closeModal();
+        if (typeof closeModal === 'function') {
+            closeModal();
+        }
     }
+});
+
+// Закрывать меню при переходе по ссылкам (для мобильных)
+document.querySelectorAll('.side-menu-list a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function() {
+        setTimeout(closeMenu, 300); // Небольшая задержка для плавности
+    });
 });
 
 // ===========================
@@ -588,5 +650,6 @@ window.closeModal = closeModal;
 window.toggleDocView = toggleDocView;
 window.openMenu = openMenu;
 window.closeMenu = closeMenu;
+
 
 

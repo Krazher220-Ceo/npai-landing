@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu(event)" role="button" aria-label="Закрыть меню"></div>
     
     <!-- Side Menu for Mobile -->
     <div class="side-menu" id="sideMenu">
@@ -19,7 +19,7 @@
                 <i class="fas fa-brain"></i>
                 <span>NPAI</span>
             </div>
-            <button class="side-menu-close" onclick="closeMenu()">
+            <button class="side-menu-close" onclick="closeMenu(event)" type="button" aria-label="Закрыть меню">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -61,7 +61,7 @@
                 <li><a href="#license">Лицензия</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" onclick="openMenu()">
+            <button class="nav-toggle" id="navToggle" onclick="openMenu(event)" type="button" aria-label="Открыть меню">
                 <i class="fas fa-bars"></i>
             </button>
         </div>

@@ -18,15 +18,15 @@ async function updateAuthNavigation() {
         
         if (user) {
             if (authLink) {
-                authLink.textContent = user.name || 'Профиль';
-                authLink.href = basePath + 'auth/profile.html';
+            authLink.textContent = user.name || 'Профиль';
+            authLink.href = basePath + 'auth/profile.html';
             }
             if (offlineLink) offlineLink.style.display = 'block';
             if (onlineLink) onlineLink.style.display = 'block';
         } else {
             if (authLink) {
-                authLink.textContent = 'Войти';
-                authLink.href = basePath + 'auth/login.html';
+            authLink.textContent = 'Войти';
+            authLink.href = basePath + 'auth/login.html';
             }
             if (offlineLink) offlineLink.style.display = 'none';
             if (onlineLink) onlineLink.style.display = 'none';
@@ -34,8 +34,8 @@ async function updateAuthNavigation() {
     } catch (e) {
         const basePath = getBasePath ? getBasePath() : './';
         if (authLink) {
-            authLink.textContent = 'Войти';
-            authLink.href = basePath + 'auth/login.html';
+        authLink.textContent = 'Войти';
+        authLink.href = basePath + 'auth/login.html';
         }
         if (offlineLink) offlineLink.style.display = 'none';
         if (onlineLink) onlineLink.style.display = 'none';

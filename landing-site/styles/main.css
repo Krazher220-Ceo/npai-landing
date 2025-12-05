@@ -142,6 +142,13 @@ body {
     font-size: 1.5rem;
     color: var(--primary-color);
     cursor: pointer;
+    padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.nav-toggle:active {
+    opacity: 0.7;
 }
 
 /* ===========================
@@ -1384,6 +1391,8 @@ a.btn:hover {
     z-index: 1500;
     opacity: 0;
     transition: opacity var(--transition-base);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .menu-overlay.active {
@@ -1401,13 +1410,25 @@ a.btn:hover {
     box-shadow: var(--shadow-xl);
     z-index: 2000;
     transition: left var(--transition-base);
-    display: flex;
+    display: none;
     flex-direction: column;
     overflow-y: auto;
 }
 
 .side-menu.active {
     left: 0;
+    display: flex;
+}
+
+/* Показывать боковое меню только на мобильных */
+@media (min-width: 769px) {
+    .side-menu {
+        display: none !important;
+    }
+    
+    .menu-overlay {
+        display: none !important;
+    }
 }
 
 .side-menu-header {
@@ -1437,9 +1458,12 @@ a.btn:hover {
     padding: 0.5rem;
     border-radius: var(--radius-sm);
     transition: background var(--transition-base);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.side-menu-close:hover {
+.side-menu-close:hover,
+.side-menu-close:active {
     background: rgba(255, 255, 255, 0.3);
 }
 
@@ -1462,9 +1486,12 @@ a.btn:hover {
     color: var(--dark-color);
     font-weight: 500;
     transition: all var(--transition-base);
+    -webkit-tap-highlight-color: rgba(26, 84, 144, 0.1);
+    touch-action: manipulation;
 }
 
-.side-menu-list a:hover {
+.side-menu-list a:hover,
+.side-menu-list a:active {
     background: var(--light-color);
     color: var(--primary-color);
     padding-left: 1.5rem;
@@ -1500,6 +1527,13 @@ a.btn:hover {
     padding: var(--spacing-xl) 0;
     background: var(--gradient-primary);
     color: white;
+    min-height: auto;
+    overflow: hidden;
+}
+
+.contact-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
 }
 
 .contact-section .section-header h2,
@@ -1509,6 +1543,7 @@ a.btn:hover {
 
 .contact-section .section-header h2::after {
     background: white;
+    margin: 1rem auto 0;
 }
 
 .contact-content {
@@ -1532,11 +1567,25 @@ a.btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .contact-item:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateX(10px);
+}
+
+@media (max-width: 768px) {
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-5px);
+    }
 }
 
 .contact-icon {
@@ -1556,12 +1605,22 @@ a.btn:hover {
     margin-bottom: 0.25rem;
 }
 
+.contact-details {
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 .contact-details a,
 .contact-details p {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: block;
 }
 
 .contact-details a:hover {
@@ -1573,17 +1632,22 @@ a.btn:hover {
     padding: var(--spacing-lg);
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-xl);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-cta h3 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: var(--spacing-sm);
+    word-wrap: break-word;
 }
 
 .contact-cta p {
     opacity: 0.9;
     margin-bottom: var(--spacing-lg);
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    word-wrap: break-word;
+    line-height: 1.6;
 }
 
 .contact-buttons {
@@ -1662,12 +1726,31 @@ a.btn:hover {
 
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
+        display: none !important;
     }
     
     .nav-toggle {
-        display: block;
+        display: block !important;
     }
+    
+    .side-menu {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none !important;
+    }
+    
+    .side-menu {
+        display: none !important;
+    }
+    
+    .menu-overlay {
+        display: none !important;
+    }
+}
     
     .hero-buttons {
         flex-direction: column;
