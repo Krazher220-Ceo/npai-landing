@@ -420,7 +420,7 @@ function showModuleDetails(moduleId) {
             <button class="btn btn-primary" onclick="closeModal()">
                 <i class="fas fa-check"></i> Понятно
             </button>
-            <a href="mailto:Krazher220@icloud.com" class="btn btn-secondary">
+            <a href="mailto:contact@example.com" class="btn btn-secondary">
                 <i class="fas fa-envelope"></i> Связаться с нами
             </a>
         </div>
